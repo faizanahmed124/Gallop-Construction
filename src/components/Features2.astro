@@ -1,0 +1,345 @@
+---
+import { Image } from 'astro:assets';
+import feature5 from '../assets/images/feature5.jpg';
+import feature6 from '../assets/images/feature6.jpg';
+import feature7 from '../assets/images/feature7.jpg';
+import feature8 from '../assets/images/feature8.jpg';
+
+// Apne asal projects ke naam, category aur location yahan likhein
+const projects = [
+  { image: feature5, name: 'Industrial Processing Plant', category: 'Industrial', location: 'Sheikhupura', year: '2024' },
+  { image: feature6, name: 'Textile Manufacturing Unit', category: 'Industrial', location: 'Faisalabad', year: '2023' },
+  { image: feature7, name: 'Corporate Office Complex', category: 'Commercial', location: 'Lahore', year: '2023' },
+  { image: feature8, name: 'Warehouse & Distribution Hub', category: 'Commercial', location: 'Lahore', year: '2022' },
+];
+
+const highlights = [
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '100%', label: 'On-Time Handover' },
+  { value: '0', label: 'Major Safety Incidents' },
+];
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<section class="pj" id="projects">
+
+  <div class="pj-bg" aria-hidden="true">
+    <div class="pj-dots"></div>
+    <div class="pj-orb pj-orb-1"></div>
+    <div class="pj-orb pj-orb-2"></div>
+  </div>
+
+  <div class="pj-container">
+
+    <!-- Header -->
+    <div class="pj-head">
+      <div>
+        <div class="pj-eyebrow">
+          <span class="pj-eyebrow-line"></span>
+          What We've Built
+        </div>
+        <h2 class="pj-heading">
+          Our <span class="pj-accent">Projects</span>
+        </h2>
+        <p class="pj-sub">
+          From factories and warehouses to offices and homes — every Gallop project is
+          planned with care, built with quality materials and handed over on schedule.
+        </p>
+      </div>
+
+      <div class="pj-highlights">
+        {highlights.map((h) => (
+          <div class="pj-hl">
+            <span class="pj-hl-val">{h.value}</span>
+            <span class="pj-hl-lbl">{h.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="pj-grid">
+      {projects.map((p, i) => (
+        <a href="/projects" class="pj-card" style={`--d:${i * 120}ms`}>
+          <div class="pj-media">
+            <Image src={p.image} alt={p.name} class="pj-img" loading="lazy" />
+            <span class="pj-tag">{p.category}</span>
+            <span class="pj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </span>
+          </div>
+          <div class="pj-info">
+            <h3 class="pj-name">{p.name}</h3>
+            <div class="pj-meta">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                {p.location}
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                {p.year}
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="pj-cta">
+      <a href="/projects" class="pj-btn">
+        <span>View All Projects</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="/contact" class="pj-btn pj-btn-ghost">
+        <span>Start Your Project</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pj {
+    --blue: #1d6ff2;
+    --blue-soft: #eaf2ff;
+    --navy: #0f2a5c;
+    --text: #5b6b85;
+    --line: #e2eaf6;
+    position: relative;
+    width: 100%;
+    padding: 6.5rem 1.5rem;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f7fd 100%);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--navy);
+  }
+
+  /* ── Background ── */
+  .pj-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .pj-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(29,111,242,0.13) 1.2px, transparent 1.2px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(ellipse at 20% 20%, #000 15%, transparent 60%);
+    -webkit-mask-image: radial-gradient(ellipse at 20% 20%, #000 15%, transparent 60%);
+  }
+  .pj-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px);
+    animation: pjFloat 18s ease-in-out infinite alternate;
+  }
+  .pj-orb-1 { width: 420px; height: 420px; background: rgba(29,111,242,0.13); top: -150px; right: -120px; }
+  .pj-orb-2 { width: 360px; height: 360px; background: rgba(14,165,233,0.11); bottom: -140px; left: -100px; animation-delay: -9s; }
+  @keyframes pjFloat {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-50px, 40px); }
+  }
+
+  .pj-container { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .pj-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 2.5rem; margin-bottom: 3rem;
+  }
+  .pj-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.9rem;
+  }
+  .pj-eyebrow-line { width: 34px; height: 3px; border-radius: 2px; background: var(--blue); }
+  .pj-heading {
+    margin: 0 0 1rem;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy) !important;
+  }
+  .pj-heading :global(*) { color: inherit; }
+  .pj-heading .pj-accent,
+  .pj-heading :global(.pj-accent) { color: var(--blue) !important; }
+  .pj-sub { margin: 0; max-width: 560px; font-size: 1.02rem; line-height: 1.7; color: var(--text); }
+
+  .pj-highlights {
+    display: flex; flex-shrink: 0;
+    padding: 1.1rem 0.4rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(15,42,92,0.06);
+  }
+  .pj-hl {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 0 1.4rem;
+    border-right: 1px solid var(--line);
+  }
+  .pj-hl:last-child { border-right: none; }
+  .pj-hl-val { font-size: 1.7rem; font-weight: 800; line-height: 1; color: var(--blue); }
+  .pj-hl-lbl { font-size: 0.76rem; color: var(--text); white-space: nowrap; }
+
+  /* ── Grid ── */
+  .pj-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .pj-card {
+    display: flex; flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(15,42,92,0.06);
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s, border-color 0.4s;
+  }
+  .pj-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(29,111,242,0.30);
+    box-shadow: 0 24px 48px rgba(15,42,92,0.14);
+  }
+
+  /* Reveal animation (sirf jab JS chale) */
+  .pj.pj-js .pj-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.7s ease var(--d),
+      transform 0.8s cubic-bezier(.22,1,.36,1) var(--d),
+      box-shadow 0.4s, border-color 0.4s;
+  }
+  .pj.pj-js.pj-in .pj-card { opacity: 1; transform: translateY(0); }
+  .pj.pj-js.pj-in .pj-card:hover { transform: translateY(-8px); transition-delay: 0s; }
+
+  .pj-media { position: relative; height: 260px; overflow: hidden; }
+  .pj-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(.22,1,.36,1);
+  }
+  .pj-card:hover .pj-img { transform: scale(1.08); }
+  .pj-media::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(15,42,92,0.45), transparent 55%);
+    opacity: 0.7;
+    transition: opacity 0.4s;
+  }
+  .pj-card:hover .pj-media::after { opacity: 1; }
+
+  .pj-tag {
+    position: absolute; top: 14px; left: 14px; z-index: 1;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--blue);
+  }
+  .pj-arrow {
+    position: absolute; right: 14px; bottom: 14px; z-index: 1;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    display: grid; place-items: center;
+    transform: scale(0.6) rotate(-45deg);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(.34,1.56,.64,1), opacity 0.3s;
+  }
+  .pj-arrow svg { width: 18px; height: 18px; }
+  .pj-card:hover .pj-arrow { transform: scale(1) rotate(0); opacity: 1; }
+
+  .pj-info { padding: 1.2rem 1.3rem 1.3rem; }
+  .pj-name {
+    margin: 0 0 0.7rem;
+    font-size: 1.05rem; font-weight: 700; line-height: 1.35;
+    color: var(--navy);
+    transition: color 0.3s;
+  }
+  .pj-card:hover .pj-name { color: var(--blue); }
+  .pj-meta { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .pj-meta span {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; color: var(--text);
+  }
+  .pj-meta svg { width: 15px; height: 15px; color: var(--blue); }
+
+  /* ── CTA ── */
+  .pj-cta {
+    margin-top: 3rem;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+  }
+  .pj-btn {
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: var(--blue);
+    border: 1.5px solid var(--blue);
+    color: #fff !important;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(29,111,242,0.30);
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .pj-btn::before {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    transition: left 0.6s ease;
+  }
+  .pj-btn:hover::before { left: 100%; }
+  .pj-btn > * { position: relative; z-index: 1; }
+  .pj-btn:hover { background: #155ad1; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(29,111,242,0.40); }
+  .pj-btn svg { transition: transform 0.25s; }
+  .pj-btn:hover svg { transform: translateX(4px); }
+  .pj-btn-ghost {
+    background: #fff;
+    color: var(--blue) !important;
+    box-shadow: none;
+  }
+  .pj-btn-ghost:hover { background: var(--blue-soft); box-shadow: none; }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .pj-grid { grid-template-columns: repeat(2, 1fr); }
+    .pj-head { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 640px) {
+    .pj { padding: 4.5rem 1.25rem; }
+    .pj-grid { grid-template-columns: 1fr; }
+    .pj-highlights { width: 100%; justify-content: space-between; }
+    .pj-hl { padding: 0 0.8rem; }
+    .pj-hl-lbl { white-space: normal; }
+    .pj-media { height: 230px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pj-orb { animation: none; }
+    .pj.pj-js .pj-card { opacity: 1; transform: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var section = document.getElementById('projects');
+    if (!section || !('IntersectionObserver' in window)) return;
+    section.classList.add('pj-js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          section.classList.add('pj-in');
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(section);
+  })();
+</script>

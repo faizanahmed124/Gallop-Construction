@@ -1,0 +1,424 @@
+---
+// Hero.astro — background.mp4 ko /public/ folder mein rakhein
+---
+
+<section id="home" class="hero">
+  <!-- ── Background Video ── -->
+  <video autoplay muted loop playsinline preload="auto" class="hero-video">
+    <source src="/background.mp4" type="video/mp4" />
+  </video>
+
+  <!-- ── Overlays ── -->
+  <div class="overlay overlay-1"></div>
+  <div class="overlay overlay-2"></div>
+
+  <!-- ── Slides (dono aik hi jagah, center mein) ── -->
+  <div class="slides">
+
+    <!-- Slide 1 : page load ke 2 sec baad aata hai -->
+    <div class="slide" data-slide="1">
+      <div class="hero-tag anim">
+        <span class="dot"></span>
+        Experienced & Reliable Contractor
+      </div>
+
+      <h1 class="hero-heading anim">
+        Building Vision,<br />
+        <span class="hero-accent">Shaping</span> the Future
+      </h1>
+
+      <p class="hero-sub anim">
+        Since 1996, we deliver end-to-end industrial solutions — from material supply
+        and mechanical installation to thermal insulation and structural erection.
+      </p>
+
+      <div class="hero-cta-row anim">
+        <a href="/services" class="btn-primary">
+          Our Services
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/contact" class="btn-secondary">
+          Get a Quote
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Slide 2 : pehli scroll par neeche se upar aata hai -->
+    <div class="slide" data-slide="2">
+      <div class="hero-tag anim">
+        <span class="dot"></span>
+        Why Clients Trust Us
+      </div>
+
+      <h2 class="hero-heading anim">
+        Engineering <span class="hero-accent">Excellence</span>,<br />
+        Delivered on Time
+      </h2>
+
+      <p class="hero-sub anim">
+        Decades of hands-on experience, a skilled workforce and a commitment to
+        safety and quality on every single project.
+      </p>
+
+      <div class="hero-stats anim">
+        {[
+          { value: "34+", label: "Years Experience" },
+          { value: "300+", label: "Projects Done" },
+          { value: "300+", label: "Major Clients" },
+        ].map(s => (
+          <div class="stat">
+            <span class="stat-val">{s.value}</span>
+            <span class="stat-lbl">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Scroll indicator ── -->
+  <div class="scroll-hint">
+    <div class="scroll-wheel"></div>
+  </div>
+</section>
+
+<script>
+  const hero  = document.getElementById('home');
+  const s1    = hero?.querySelector('[data-slide="1"]');
+  const s2    = hero?.querySelector('[data-slide="2"]');
+  const hint  = hero?.querySelector('.scroll-hint');
+  const root  = document.documentElement;
+
+  const START_DELAY = 2000; // page load ke baad text kitni der mein aaye
+  const ANIM_TIME   = 1000; // slide change animation time
+
+  // stage 0 = intezar, 1 = pehla text, 2 = doosra text (scroll unlock)
+  let stage = 0;
+  let animating = false;
+
+  const lock   = () => root.classList.add('hero-locked');
+  const unlock = () => root.classList.remove('hero-locked');
+
+  if (hero && s1 && s2) {
+    // Page hamesha top se shuru ho
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    lock();
+
+    // 2 second baad pehla text
+    setTimeout(() => {
+      s1.classList.add('is-active');
+      hint?.classList.add('is-visible');
+      stage = 1;
+    }, START_DELAY);
+
+    function goTo(n: number) {
+      if (animating || n === stage) return;
+      animating = true;
+
+      if (n === 2) {
+        s1!.classList.remove('is-active');
+        s1!.classList.add('is-out');      // pehla text upar nikal jaye
+        s2!.classList.add('is-active');   // doosra neeche se aaye
+        hint?.classList.remove('is-visible');
+      } else {
+        lock();
+        window.scrollTo(0, 0);
+        s2!.classList.remove('is-active');
+        s1!.classList.remove('is-out');
+        s1!.classList.add('is-active');
+        hint?.classList.add('is-visible');
+      }
+      stage = n;
+
+      setTimeout(() => {
+        animating = false;
+        if (n === 2) unlock();           // ab page scroll ho sakta hai
+      }, ANIM_TIME);
+    }
+
+    // Mouse wheel / trackpad
+    window.addEventListener('wheel', (e) => {
+      if (stage === 2 && !animating) {
+        // top par wapas upar scroll kare to pehla text wapas
+        if (window.scrollY <= 0 && e.deltaY < 0) { e.preventDefault(); goTo(1); }
+        return;
+      }
+      e.preventDefault();
+      if (stage === 1 && !animating && e.deltaY > 10) goTo(2);
+    }, { passive: false });
+
+    // Mobile touch
+    let touchY = 0;
+    window.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      const diff = touchY - e.touches[0].clientY; // + = upar swipe (neeche scroll)
+      if (stage === 2 && !animating) {
+        if (window.scrollY <= 0 && diff < -40) { e.preventDefault(); goTo(1); }
+        return;
+      }
+      e.preventDefault();
+      if (stage === 1 && !animating && diff > 40) goTo(2);
+    }, { passive: false });
+
+    // Keyboard
+    window.addEventListener('keydown', (e) => {
+      const t = e.target as HTMLElement;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      const down = ['ArrowDown', 'PageDown', ' ', 'Spacebar'].includes(e.key);
+      const up   = ['ArrowUp', 'PageUp'].includes(e.key);
+      if (!down && !up) return;
+
+      if (stage === 2 && !animating) {
+        if (window.scrollY <= 0 && up) { e.preventDefault(); goTo(1); }
+        return;
+      }
+      e.preventDefault();
+      if (stage === 1 && !animating && down) goTo(2);
+    });
+  }
+</script>
+
+<style>
+  /* ── Colors: white + blue ── */
+  .hero {
+    --blue: #3b82f6;
+    --blue-light: #60a5fa;
+    --blue-dark: #1d4ed8;
+
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    min-height: 100svh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Scroll lock (jab tak doosra text na aa jaye) */
+  :global(html.hero-locked),
+  :global(html.hero-locked body) {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .overlay { position: absolute; inset: 0; z-index: 10; }
+  .overlay-1 { background: radial-gradient(ellipse at center, rgba(2,8,23,0.55) 0%, rgba(2,8,23,0.80) 100%); }
+  .overlay-2 { background: linear-gradient(to top, rgba(2,8,23,0.70) 0%, transparent 50%); }
+
+  /* ── Slides: dono aik hi jagah stack ── */
+  .slides {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    padding: 6rem 1.5rem 5rem;
+    display: grid;
+    place-items: center;
+  }
+  .slide {
+    grid-area: 1 / 1;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  .slide.is-active,
+  .slide.is-out { visibility: visible; }
+  .slide.is-active { pointer-events: auto; }
+
+  /* Har element ki animation */
+  .anim {
+    opacity: 0;
+    transform: translateY(70px);
+    transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide.is-active .anim { opacity: 1; transform: translateY(0); }
+  .slide.is-active .anim:nth-child(1) { transition-delay: 0.05s; }
+  .slide.is-active .anim:nth-child(2) { transition-delay: 0.15s; }
+  .slide.is-active .anim:nth-child(3) { transition-delay: 0.25s; }
+  .slide.is-active .anim:nth-child(4) { transition-delay: 0.35s; }
+
+  /* Pehla text upar nikal jaye */
+  .slide.is-out .anim {
+    opacity: 0;
+    transform: translateY(-80px);
+    transition-duration: 0.6s, 0.7s;
+  }
+
+  /* ── Tag ── */
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(96,165,250,0.40);
+    border-radius: 999px;
+    padding: 6px 16px;
+    backdrop-filter: blur(6px);
+    background: rgba(59,130,246,0.12);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    box-shadow: 0 0 8px var(--blue-light);
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(1.3); }
+  }
+
+  /* ── Heading ── */
+  .hero-heading {
+    font-size: clamp(2.3rem, 6.5vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin: 0;
+  }
+  .hero-accent { color: var(--blue-light); }
+
+  /* ── Sub ── */
+  .hero-sub {
+    margin-top: 1.5rem;
+    max-width: 580px;
+    font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+    line-height: 1.75;
+    color: rgba(255,255,255,0.78);
+  }
+
+  /* ── CTAs ── */
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: 2.25rem;
+  }
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-primary { background: var(--blue); }
+  .btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59,130,246,0.35);
+  }
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.30);
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--blue-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── Stats ── */
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.75rem;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 2rem;
+    border-right: 1px solid rgba(96,165,250,0.30);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-val {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 800;
+    color: var(--blue-light);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── Scroll hint ── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.6s ease 0.6s;
+  }
+  .scroll-hint.is-visible { opacity: 1; }
+  .scroll-wheel {
+    width: 24px;
+    height: 38px;
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: 12px;
+    position: relative;
+  }
+  .scroll-wheel::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--blue-light);
+    animation: scrollDown 1.6s ease infinite;
+  }
+  @keyframes scrollDown {
+    0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  }
+
+  @media (max-width: 640px) {
+    .stat { padding: 0 1.1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anim { transition-duration: 0.01s !important; transition-delay: 0s !important; }
+  }
+</style>

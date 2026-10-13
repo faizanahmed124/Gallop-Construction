@@ -1,0 +1,333 @@
+---
+// TrustSection.astro — Gallop Construction
+// Registrations & approvals (FBR, PRA, PEC)
+
+const credentials = [
+  {
+    code: 'FBR',
+    level: 'Federal',
+    name: 'Federal Board of Revenue',
+    text: 'Registered taxpayer with the Federal Board of Revenue. Every invoice we issue is tax-compliant, so your project accounts stay clean and audit-ready.',
+    points: ['Active Taxpayer Status', 'Sales-Tax Compliant Invoicing'],
+  },
+  {
+    code: 'PRA',
+    level: 'Provincial',
+    name: 'Punjab Revenue Authority',
+    text: 'Registered with the Punjab Revenue Authority for construction services. Provincial service tax is filed and maintained on time, every period.',
+    points: ['Services Tax Registered', 'Timely Returns Filed'],
+  },
+  {
+    code: 'PEC',
+    level: 'Engineering',
+    name: 'Pakistan Engineering Council',
+    text: 'Licensed with the Pakistan Engineering Council. Our projects are planned and supervised by registered engineers, following national codes and standards.',
+    points: ['Licensed Constructor', 'PEC-Registered Engineers'],
+  },
+];
+
+const trustBar = [
+  { title: 'Legally Registered', text: 'Fully documented business', icon: 'shield' },
+  { title: 'Transparent Billing', text: 'Clear, tax-compliant invoices', icon: 'doc' },
+  { title: 'Code Compliant', text: 'Built to national standards', icon: 'scale' },
+  { title: 'Qualified Engineers', text: 'Supervision on every site', icon: 'helmet' },
+];
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<section class="tr" id="trust">
+
+  <div class="tr-bg" aria-hidden="true">
+    <div class="tr-grid"></div>
+    <div class="tr-orb tr-orb-1"></div>
+    <div class="tr-orb tr-orb-2"></div>
+  </div>
+
+  <div class="tr-container">
+
+    <!-- Header -->
+    <div class="tr-head">
+      <div class="tr-eyebrow" data-gsap="fade-up">
+        <span class="tr-eyebrow-line"></span>
+        Verified &amp; Trusted
+        <span class="tr-eyebrow-line"></span>
+      </div>
+      <h2 class="tr-heading" data-gsap="fade-up">
+        Officially <span class="tr-accent">Registered</span> &amp; Approved
+      </h2>
+      <p class="tr-sub" data-gsap="fade-up">
+        When you build with Gallop, you build with a company that is fully registered,
+        tax-compliant and licensed — so your investment is protected from the first
+        brick to final handover.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="tr-cards" data-gsap="stagger">
+      {credentials.map((c) => (
+        <div class="tr-card" data-gsap-item>
+          <div class="tr-card-top">
+            <div class="tr-seal">
+              <span>{c.code}</span>
+            </div>
+            <span class="tr-level">
+              <span class="tr-level-dot"></span>
+              {c.level}
+            </span>
+          </div>
+
+          <h3 class="tr-card-title">{c.name}</h3>
+          <p class="tr-card-text">{c.text}</p>
+
+          <ul class="tr-points">
+            {c.points.map((p) => (
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                {p}
+              </li>
+            ))}
+          </ul>
+
+          <div class="tr-status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            Verified &amp; Active
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust bar -->
+    <div class="tr-bar" data-gsap="fade-up">
+      {trustBar.map((t) => (
+        <div class="tr-bar-item">
+          <span class="tr-bar-icon">
+            {t.icon === 'shield' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            )}
+            {t.icon === 'doc' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+            )}
+            {t.icon === 'scale' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0L5 7Zm14 0-3 7a3.5 3.5 0 0 0 6 0l-3-7Z"/></svg>
+            )}
+            {t.icon === 'helmet' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M5 17v-3a7 7 0 0 1 14 0v3M10 7V5h4v2"/></svg>
+            )}
+          </span>
+          <div>
+            <p class="tr-bar-title">{t.title}</p>
+            <p class="tr-bar-text">{t.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .tr {
+    --blue: #1d6ff2;
+    --blue-soft: #eaf2ff;
+    --navy: #0f2a5c;
+    --text: #5b6b85;
+    --line: #e2eaf6;
+    position: relative;
+    width: 100%;
+    padding: 6.5rem 1.5rem;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, #f3f7fd 0%, #ffffff 100%);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--navy);
+  }
+
+  /* ── Background ── */
+  .tr-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .tr-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(29,111,242,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29,111,242,0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 70%);
+  }
+  .tr-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px);
+    animation: trFloat 18s ease-in-out infinite alternate;
+  }
+  .tr-orb-1 { width: 420px; height: 420px; background: rgba(29,111,242,0.14); top: -140px; right: -100px; }
+  .tr-orb-2 { width: 360px; height: 360px; background: rgba(14,165,233,0.12); bottom: -120px; left: -100px; animation-delay: -9s; }
+  @keyframes trFloat {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-50px, 40px); }
+  }
+
+  .tr-container { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .tr-head { text-align: center; max-width: 720px; margin: 0 auto 3.5rem; }
+  .tr-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.9rem;
+  }
+  .tr-eyebrow-line { width: 30px; height: 3px; border-radius: 2px; background: var(--blue); }
+  .tr-heading {
+    margin: 0 0 1rem;
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    font-weight: 800; line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--navy) !important;
+  }
+  .tr-heading :global(*) { color: inherit; }
+  .tr-heading .tr-accent,
+  .tr-heading :global(.tr-accent) { color: var(--blue) !important; }
+  .tr-sub { margin: 0; font-size: 1.02rem; line-height: 1.7; color: var(--text); }
+
+  /* ── Cards ── */
+  .tr-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+  }
+  .tr-card {
+    position: relative;
+    display: flex; flex-direction: column;
+    padding: 2rem 1.8rem 1.6rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(15,42,92,0.06);
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s, border-color 0.35s;
+  }
+  .tr-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2b7cff, #0ea5e9);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+  }
+  .tr-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(29,111,242,0.30);
+    box-shadow: 0 22px 44px rgba(15,42,92,0.12);
+  }
+  .tr-card:hover::before { transform: scaleX(1); }
+
+  .tr-card-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.4rem;
+  }
+  .tr-seal {
+    width: 74px; height: 74px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(150deg, #2b7cff, #1257d6);
+    box-shadow: 0 10px 24px rgba(29,111,242,0.30), inset 0 0 0 5px rgba(255,255,255,0.22);
+    transition: transform 0.4s;
+  }
+  .tr-card:hover .tr-seal { transform: rotate(-8deg) scale(1.05); }
+  .tr-seal span { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.02em; color: #fff; }
+
+  .tr-level {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--blue-soft);
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue);
+  }
+  .tr-level-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--blue);
+    animation: trPulse 2s ease infinite;
+  }
+  @keyframes trPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(1.35); }
+  }
+
+  .tr-card-title { margin: 0 0 0.7rem; font-size: 1.22rem; font-weight: 700; color: var(--navy); }
+  .tr-card-text { margin: 0 0 1.3rem; font-size: 0.92rem; line-height: 1.7; color: var(--text); }
+
+  .tr-points {
+    list-style: none; margin: 0 0 1.5rem; padding: 0;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .tr-points li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.9rem; font-weight: 600; color: var(--navy);
+  }
+  .tr-points svg {
+    width: 20px; height: 20px; flex-shrink: 0;
+    padding: 4px;
+    border-radius: 50%;
+    background: var(--blue-soft);
+    color: var(--blue);
+  }
+
+  .tr-status {
+    margin-top: auto;
+    display: flex; align-items: center; gap: 8px;
+    padding-top: 1.1rem;
+    border-top: 1px dashed var(--line);
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--blue);
+  }
+  .tr-status svg { width: 18px; height: 18px; }
+
+  /* ── Trust bar ── */
+  .tr-bar {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1.6rem 1rem;
+    border-radius: 20px;
+    background: linear-gradient(120deg, #0f2a5c 0%, #123a80 55%, #1d6ff2 100%);
+    box-shadow: 0 20px 44px rgba(15,42,92,0.22);
+  }
+  .tr-bar-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 0.3rem 1.2rem;
+    border-right: 1px solid rgba(255,255,255,0.14);
+  }
+  .tr-bar-item:last-child { border-right: none; }
+  .tr-bar-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    display: grid; place-items: center;
+  }
+  .tr-bar-icon svg { width: 22px; height: 22px; }
+  .tr-bar-title { margin: 0; font-size: 0.95rem; font-weight: 700; color: #fff; }
+  .tr-bar-text { margin: 2px 0 0; font-size: 0.78rem; color: rgba(255,255,255,0.72); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .tr-cards { grid-template-columns: repeat(2, 1fr); }
+    .tr-bar { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; }
+    .tr-bar-item:nth-child(2) { border-right: none; }
+  }
+  @media (max-width: 680px) {
+    .tr { padding: 4.5rem 1.25rem; }
+    .tr-cards { grid-template-columns: 1fr; }
+    .tr-bar { grid-template-columns: 1fr; padding: 1.2rem 0.6rem; }
+    .tr-bar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.7rem 0.8rem; }
+    .tr-bar-item:last-child { border-bottom: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tr-orb, .tr-level-dot { animation: none; }
+  }
+</style>

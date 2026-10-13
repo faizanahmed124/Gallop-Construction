@@ -1,0 +1,342 @@
+---
+// Footer.astro — Gallop Construction
+// Background image: /public/backgroundimage.png
+
+const features = [
+  {
+    title: 'Commitment to Safety',
+    text: 'Zero compromise on safety standards.',
+    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>`,
+  },
+  {
+    title: 'Skilled & Experienced Team',
+    text: 'Expert dedicated to your success.',
+    icon: `<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.7 5 5.8"/>`,
+  },
+  {
+    title: 'Modern Technology',
+    text: 'Smarter methods for better results.',
+    icon: `<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>`,
+  },
+  {
+    title: 'Client-Centric Approach',
+    text: 'Your goals are our priority.',
+    icon: `<path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.8-2.8l-4.2 3.9"/><path d="m2 15 6 6"/>`,
+  },
+];
+
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+];
+
+// Apni asal contact details yahan likhein
+const contact = {
+  phone: '+92 300 1234567',
+  email: 'info@gallopconstruction.com',
+  location: 'Lahore, Pakistan',
+};
+
+const year = new Date().getFullYear();
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<footer class="ft" aria-label="Site footer">
+
+  <!-- Background image + overlays -->
+  <div class="ft-bg" aria-hidden="true">
+    <div class="ft-bg-img"></div>
+    <div class="ft-bg-shade"></div>
+    <div class="ft-glow"></div>
+  </div>
+
+  <div class="ft-container">
+
+    <!-- ══ Top: Why choose us ══ -->
+    <div class="ft-top">
+      <div class="ft-intro">
+        <div class="ft-eyebrow">
+          <span class="ft-eyebrow-line"></span>
+          Why Choose Us
+        </div>
+        <h2 class="ft-heading">Quality. Safety. Trust.</h2>
+        <p class="ft-text">
+          We combine experience, skilled professionals and modern technology to ensure
+          every project is completed on time, within budget and beyond expectations.
+        </p>
+        <a href="/services" class="ft-btn-outline">
+          Our Process
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <ul class="ft-features">
+        {features.map((f) => (
+          <li class="ft-feature">
+            <span class="ft-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={f.icon}></svg>
+            </span>
+            <span>
+              <span class="ft-feature-title">{f.title}</span>
+              <span class="ft-feature-text">{f.text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- ══ Middle: brand + CTA ══ -->
+    <div class="ft-mid">
+      <a href="/" class="ft-brand" aria-label="Gallop Construction home">
+        <span class="ft-brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-6 7 6v12"/><path d="M9 21v-5h6v5"/></svg>
+        </span>
+        <span class="ft-brand-text">
+          <span class="ft-brand-name">GALLOP</span>
+          <span class="ft-brand-sub">CONSTRUCTION</span>
+        </span>
+      </a>
+
+      <div class="ft-cta">
+        <h3 class="ft-cta-title">Let's Build Something Great Together</h3>
+        <p class="ft-cta-text">Ready to start your next project? Get in touch with us today.</p>
+        <div class="ft-contact">
+          <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class="ft-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            {contact.phone}
+          </a>
+          <a href={`mailto:${contact.email}`} class="ft-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            {contact.email}
+          </a>
+          <span class="ft-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            {contact.location}
+          </span>
+        </div>
+      </div>
+
+      <a href="/contact" class="ft-btn">
+        Contact Us
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- ══ Bottom bar ══ -->
+    <div class="ft-bottom">
+      <p class="ft-copy">&copy; {year} Gallop Construction. All rights reserved.</p>
+
+      <div class="ft-bottom-right">
+        <nav class="ft-nav" aria-label="Footer navigation">
+          {links.map((l) => <a href={l.href}>{l.label}</a>)}
+        </nav>
+
+        <div class="ft-social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6Z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5Z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.4-1.2.4-3.8.4-3.8s0-2.6-.4-3.8ZM10 15V9l5.2 3L10 15Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .ft {
+    --blue: #1d6ff2;
+    --blue-light: #60a5fa;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #071a3a;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  /* ── Background ── */
+  .ft-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .ft-bg-img {
+    position: absolute; inset: 0;
+    background: url('/backgroundimage.png') left center / cover no-repeat;
+    animation: ftZoom 30s ease-in-out infinite alternate;
+  }
+  @keyframes ftZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+  .ft-bg-shade {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(7,26,58,0.15) 0%, rgba(7,26,58,0.75) 28%, rgba(7,26,58,0.88) 60%, rgba(7,26,58,0.92) 100%),
+      linear-gradient(to top, rgba(4,14,34,0.95) 0%, rgba(4,14,34,0.6) 30%, transparent 60%);
+  }
+  .ft-glow {
+    position: absolute; width: 520px; height: 520px; border-radius: 50%;
+    right: -160px; top: -200px;
+    background: rgba(29,111,242,0.28);
+    filter: blur(110px);
+    animation: ftGlow 16s ease-in-out infinite alternate;
+  }
+  @keyframes ftGlow { to { transform: translate(-80px, 60px); } }
+
+  /* Poori screen ki width use ho */
+  .ft-container { width: 100%; max-width: none; margin: 0; padding: 0 5vw; }
+
+  /* ── Top ── */
+  .ft-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 4vw;
+    align-items: center;
+    /* left side worker ke liye screen ka ~22% khali, baqi poori width text ki */
+    padding: 6rem 0 4.5rem 22vw;
+  }
+  .ft-features { justify-self: end; }
+  .ft-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 0.9rem;
+  }
+  .ft-eyebrow-line { width: 34px; height: 2px; border-radius: 2px; background: var(--blue-light); }
+  .ft-heading {
+    margin: 0 0 1.1rem;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;
+    color: #fff !important;
+  }
+  @media (min-width: 1280px) { .ft-heading { white-space: nowrap; } }
+  .ft-text { margin: 0 0 1.8rem; max-width: 600px; font-size: 0.98rem; line-height: 1.75; color: rgba(255,255,255,0.78); }
+
+  .ft-btn-outline {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.75);
+    color: #fff !important;
+    font-size: 0.92rem; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .ft-btn-outline svg { width: 16px; height: 16px; transition: transform 0.25s; }
+  .ft-btn-outline:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
+  .ft-btn-outline:hover svg { transform: translateX(4px); }
+
+  /* Features */
+  .ft-features { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.5rem; }
+  .ft-feature { display: flex; align-items: center; gap: 1rem; }
+  .ft-feature-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--blue-light);
+    border: 1.5px solid rgba(96,165,250,0.45);
+    background: rgba(29,111,242,0.12);
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+  }
+  .ft-feature-icon svg { width: 22px; height: 22px; }
+  .ft-feature:hover .ft-feature-icon { background: var(--blue); color: #fff; border-color: var(--blue); transform: scale(1.06); }
+  .ft-feature-title { display: block; font-size: 1rem; font-weight: 700; color: #fff; }
+  .ft-feature-text { display: block; margin-top: 2px; font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+
+  /* ── Middle ── */
+  .ft-mid {
+    display: flex; align-items: center; gap: 2.5rem;
+    padding: 2.2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .ft-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+  .ft-brand-mark {
+    width: 54px; height: 54px; border-radius: 14px;
+    display: grid; place-items: center;
+    background: linear-gradient(150deg, #2b7cff, #1257d6);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(29,111,242,0.35);
+  }
+  .ft-brand-mark svg { width: 28px; height: 28px; }
+  .ft-brand-text { display: flex; flex-direction: column; line-height: 1; }
+  .ft-brand-name { font-size: 1.6rem; font-weight: 800; letter-spacing: 0.06em; color: #fff; }
+  .ft-brand-sub { margin-top: 4px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.32em; color: var(--blue-light); }
+
+  .ft-cta { flex: 1; padding-left: 2.5rem; border-left: 1px solid rgba(255,255,255,0.12); }
+  .ft-cta-title { margin: 0; font-size: 1.15rem; font-weight: 700; color: #fff; }
+  .ft-cta-text { margin: 4px 0 1rem; font-size: 0.86rem; color: rgba(255,255,255,0.68); }
+  .ft-contact { display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; }
+  .ft-contact-item {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.86rem; color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a.ft-contact-item:hover { color: var(--blue-light); }
+  .ft-contact-item svg { width: 17px; height: 17px; color: var(--blue-light); }
+
+  .ft-btn {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 15px 32px;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #fff !important;
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(29,111,242,0.40);
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .ft-btn svg { width: 16px; height: 16px; transition: transform 0.25s; }
+  .ft-btn:hover { background: #155ad1; transform: translateY(-2px); box-shadow: 0 16px 34px rgba(29,111,242,0.50); }
+  .ft-btn:hover svg { transform: translateX(4px); }
+
+  /* ── Bottom ── */
+  .ft-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    padding: 1.3rem 0 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .ft-copy { margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+  .ft-bottom-right { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+  .ft-nav { display: flex; flex-wrap: wrap; gap: 1.8rem; }
+  .ft-nav a { font-size: 0.85rem; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; }
+  .ft-nav a:hover { color: var(--blue-light); }
+  .ft-social { display: flex; gap: 0.6rem; }
+  .ft-social a {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: grid; place-items: center;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .ft-social svg { width: 16px; height: 16px; }
+  .ft-social a:hover { background: var(--blue); transform: translateY(-2px); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .ft-top { padding-left: 18vw; }
+  }
+  @media (max-width: 900px) {
+    .ft-bg-shade { background: linear-gradient(to bottom, rgba(7,26,58,0.80), rgba(4,14,34,0.95)); }
+    .ft-top { grid-template-columns: 1fr; gap: 2.5rem; padding: 4.5rem 0 3rem; }
+    .ft-features { justify-self: start; }
+    .ft-mid { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
+    .ft-cta { padding-left: 0; border-left: none; }
+  }
+  @media (max-width: 640px) {
+    .ft-bottom, .ft-bottom-right { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .ft-nav { gap: 1.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ft-bg-img, .ft-glow { animation: none; }
+  }
+</style>

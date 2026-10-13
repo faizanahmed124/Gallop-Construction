@@ -1,0 +1,620 @@
+---
+import { Image } from 'astro:assets';
+
+import img1  from '../assets/images/image1.jpeg';
+import img2  from '../assets/images/image2.jpeg';
+import img3  from '../assets/images/image3.jpeg';
+import img4  from '../assets/images/image4.jpeg';
+import img5  from '../assets/images/image5.jpeg';
+import img6  from '../assets/images/image6.jpeg';
+import img7  from '../assets/images/image7.jpeg';
+import img8  from '../assets/images/image8.jpeg';
+import img9  from '../assets/images/image9.jpeg';
+import img10 from '../assets/images/image10.jpeg';
+import img11 from '../assets/images/image11.jpeg';
+import img12 from '../assets/images/image12.jpeg';
+import img15 from '../assets/images/image15.jpeg';
+import img16 from '../assets/images/image16.jpeg';
+import img17 from '../assets/images/image17.jpeg';
+import img18 from '../assets/images/image18.jpeg';
+import img19 from '../assets/images/image19.jpeg';
+import img20 from '../assets/images/image20.jpeg';
+
+// Har image ke saath ek chhota caption — apne projects ke hisaab se badal lein
+const photos = [
+  { src: img1,  title: 'Foundation & Structure Work' },
+  { src: img2,  title: 'Steel Erection on Site' },
+  { src: img3,  title: 'Industrial Plant Construction' },
+  { src: img4,  title: 'Mechanical Fabrication' },
+  { src: img5,  title: 'Pipeline Installation' },
+  { src: img6,  title: 'Insulation & Cladding' },
+  { src: img7,  title: 'Site Development' },
+  { src: img8,  title: 'Tank Fabrication' },
+  { src: img9,  title: 'Structural Steel Frame' },
+  { src: img10, title: 'Factory Shed Construction' },
+  { src: img11, title: 'Boiler Installation' },
+  { src: img12, title: 'HVAC Ducting' },
+  { src: img15, title: 'Concrete & RCC Work' },
+  { src: img16, title: 'Welding & Fitting' },
+  { src: img17, title: 'Project Handover' },
+  { src: img18, title: 'On-Site Team at Work' },
+  { src: img19, title: 'Warehouse Construction' },
+  { src: img20, title: 'Finishing Works' },
+];
+
+const total = photos.length;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<section class="gl" id="gallery">
+
+  <div class="gl-bg" aria-hidden="true">
+    <div class="gl-dots"></div>
+    <div class="gl-orb gl-orb-1"></div>
+    <div class="gl-orb gl-orb-2"></div>
+  </div>
+
+  <div class="gl-container">
+
+    <!-- ══ Header ══ -->
+    <div class="gl-head">
+      <div>
+        <div class="gl-eyebrow">
+          <span class="gl-eyebrow-line"></span>
+          Our Work
+        </div>
+        <h2 class="gl-heading">
+          Project <span class="gl-accent">Gallery</span>
+        </h2>
+        <p class="gl-sub">
+          Real sites, real teams, real results — a look inside the projects
+          Gallop Construction has built from the ground up.
+        </p>
+      </div>
+
+      <div class="gl-controls">
+        <button class="gl-ctrl" data-gl="prev" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="gl-ctrl gl-ctrl-play" data-gl="toggle" aria-label="Pause slideshow">
+          <svg class="gl-ico-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg class="gl-ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10-6.5a1 1 0 0 0 0-1.7l-10-6.5A1 1 0 0 0 8 5.5Z"/></svg>
+        </button>
+        <button class="gl-ctrl" data-gl="next" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ Showcase (auto slideshow) ══ -->
+    <div class="gl-showcase">
+
+      <div class="gl-stage" data-gl="stage">
+        {photos.map((p, i) => (
+          <figure class={`gl-slide${i === 0 ? ' is-active' : ''}`} data-index={i}>
+            <Image src={p.src} alt={p.title} class="gl-slide-img" loading={i < 2 ? 'eager' : 'lazy'} widths={[800, 1400]} sizes="(max-width: 900px) 100vw, 70vw" />
+          </figure>
+        ))}
+        <div class="gl-stage-shade"></div>
+
+        <div class="gl-caption">
+          <span class="gl-caption-count">
+            <span data-gl="current">01</span><span class="gl-caption-sep">/</span>{pad(total)}
+          </span>
+          <h3 class="gl-caption-title" data-gl="title">{photos[0].title}</h3>
+        </div>
+
+        <button class="gl-expand" data-gl="expand" aria-label="View full screen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+
+        <div class="gl-progress"><span data-gl="bar"></span></div>
+      </div>
+
+      <!-- Side: up next -->
+      <aside class="gl-side">
+        <div class="gl-side-head">
+          <span>Up Next</span>
+          <span class="gl-live"><span class="gl-live-dot"></span>Auto</span>
+        </div>
+        <div class="gl-next-list" data-gl="nextlist">
+          {photos.map((p, i) => (
+            <button class="gl-next-item" data-index={i} aria-label={`Show ${p.title}`}>
+              <Image src={p.src} alt="" class="gl-next-img" widths={[240]} sizes="120px" loading="lazy" />
+              <span class="gl-next-text">
+                <span class="gl-next-num">{pad(i + 1)}</span>
+                <span class="gl-next-title">{p.title}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+      </aside>
+    </div>
+
+  </div>
+
+  <!-- ══ Auto-scrolling filmstrip ══ -->
+  <div class="gl-strip">
+    <div class="gl-track">
+      {[0, 1].map(() =>
+        photos.map((p, i) => (
+          <button class="gl-tile" data-index={i} aria-label={`Open ${p.title}`}>
+            <Image src={p.src} alt={p.title} class="gl-tile-img" widths={[400]} sizes="260px" loading="lazy" />
+            <span class="gl-tile-label">{p.title}</span>
+          </button>
+        ))
+      )}
+    </div>
+  </div>
+
+  <!-- ══ Lightbox ══ -->
+  <div class="gl-lightbox" data-gl="lightbox" aria-hidden="true">
+    <button class="gl-lb-close" data-gl="lb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button class="gl-lb-nav gl-lb-prev" data-gl="lb-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <figure class="gl-lb-figure">
+      <img data-gl="lb-img" alt="" />
+      <figcaption data-gl="lb-cap"></figcaption>
+    </figure>
+    <button class="gl-lb-nav gl-lb-next" data-gl="lb-next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+</section>
+
+<style>
+  .gl {
+    --blue: #1d6ff2;
+    --blue-soft: #eaf2ff;
+    --navy: #0f2a5c;
+    --text: #5b6b85;
+    --line: #e2eaf6;
+    --slide-time: 5s;
+    position: relative;
+    width: 100%;
+    padding: 6.5rem 0 5rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f7fd 100%);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--navy);
+  }
+
+  /* ── Background ── */
+  .gl-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .gl-dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(29,111,242,0.13) 1.2px, transparent 1.2px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(ellipse at 15% 10%, #000 15%, transparent 55%);
+    -webkit-mask-image: radial-gradient(ellipse at 15% 10%, #000 15%, transparent 55%);
+  }
+  .gl-orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: glFloat 18s ease-in-out infinite alternate; }
+  .gl-orb-1 { width: 460px; height: 460px; background: rgba(29,111,242,0.13); top: -160px; right: -120px; }
+  .gl-orb-2 { width: 380px; height: 380px; background: rgba(14,165,233,0.11); bottom: 0; left: -120px; animation-delay: -9s; }
+  @keyframes glFloat { to { transform: translate(-50px, 40px); } }
+
+  .gl-container { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── Header ── */
+  .gl-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 2.4rem; }
+  .gl-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 0.9rem;
+  }
+  .gl-eyebrow-line { width: 34px; height: 3px; border-radius: 2px; background: var(--blue); }
+  .gl-heading {
+    margin: 0 0 1rem;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;
+    color: var(--navy) !important;
+  }
+  .gl-heading :global(*) { color: inherit; }
+  .gl-heading .gl-accent, .gl-heading :global(.gl-accent) { color: var(--blue) !important; }
+  .gl-sub { margin: 0; max-width: 560px; font-size: 1.02rem; line-height: 1.7; color: var(--text); }
+
+  .gl-controls { display: flex; gap: 0.6rem; flex-shrink: 0; }
+  .gl-ctrl {
+    width: 50px; height: 50px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: #fff; color: var(--navy);
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 18px rgba(15,42,92,0.08);
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
+  }
+  .gl-ctrl svg { width: 20px; height: 20px; }
+  .gl-ctrl:hover { background: var(--blue); color: #fff; border-color: var(--blue); transform: translateY(-2px); }
+  .gl-ctrl-play { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .gl-ico-play { display: none; }
+  .gl.is-paused .gl-ico-play { display: block; }
+  .gl.is-paused .gl-ico-pause { display: none; }
+
+  /* ── Showcase ── */
+  .gl-showcase { display: grid; grid-template-columns: 1fr 320px; gap: 1.4rem; }
+
+  .gl-stage {
+    position: relative;
+    height: 560px;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #0f2a5c;
+    box-shadow: 0 30px 60px rgba(15,42,92,0.22);
+  }
+  .gl-slide {
+    position: absolute; inset: 0; margin: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .gl-slide.is-active { opacity: 1; z-index: 1; }
+  .gl-slide-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: scale(1.12);
+  }
+  /* Slow "Ken Burns" zoom on active slide */
+  .gl-slide.is-active .gl-slide-img { animation: glZoom calc(var(--slide-time) + 1.5s) ease-out forwards; }
+  .gl-slide:nth-child(even).is-active .gl-slide-img { animation-name: glZoomAlt; }
+  @keyframes glZoom    { from { transform: scale(1.12) translate(0, 0); }    to { transform: scale(1) translate(0, 0); } }
+  @keyframes glZoomAlt { from { transform: scale(1) translate(0, 0); }       to { transform: scale(1.12) translate(-2%, -1%); } }
+
+  .gl-stage-shade {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(to top, rgba(7,26,58,0.80) 0%, rgba(7,26,58,0.15) 45%, transparent 70%);
+  }
+
+  .gl-caption { position: absolute; left: 2rem; right: 6rem; bottom: 2.2rem; z-index: 3; }
+  .gl-caption-count { display: inline-flex; align-items: baseline; gap: 6px; font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.7); }
+  .gl-caption-count [data-gl="current"] { font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .gl-caption-sep { color: #60a5fa; }
+  .gl-caption-title {
+    margin: 0.3rem 0 0;
+    font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; line-height: 1.2;
+    color: #fff;
+    animation: glCap 0.7s cubic-bezier(.22,1,.36,1);
+  }
+  .gl-caption-title.is-swap { animation: none; }
+  @keyframes glCap { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .gl-expand {
+    position: absolute; right: 1.6rem; bottom: 2.2rem; z-index: 3;
+    width: 48px; height: 48px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,0.16); color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .gl-expand svg { width: 20px; height: 20px; }
+  .gl-expand:hover { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
+
+  .gl-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; z-index: 3; background: rgba(255,255,255,0.18); }
+  .gl-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #60a5fa, #1d6ff2); }
+  .gl-progress span.is-running { animation: glBar var(--slide-time) linear forwards; }
+  .gl.is-paused .gl-progress span { animation-play-state: paused; }
+  @keyframes glBar { from { width: 0; } to { width: 100%; } }
+
+  /* ── Side list ── */
+  .gl-side {
+    display: flex; flex-direction: column;
+    height: 560px;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    box-shadow: 0 16px 40px rgba(15,42,92,0.08);
+  }
+  .gl-side-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.3rem 0.4rem 0.9rem;
+    font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .gl-live {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--blue-soft); color: var(--blue);
+    font-size: 0.68rem;
+  }
+  .gl-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: glPulse 1.6s ease infinite; }
+  .gl.is-paused .gl-live-dot { animation: none; opacity: 0.4; }
+  @keyframes glPulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.5); } }
+
+  .gl-next-list {
+    flex: 1;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #c9d8ef transparent;
+    padding-right: 4px;
+  }
+  .gl-next-item {
+    display: flex; align-items: center; gap: 12px;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .gl-next-item:hover { background: #f5f8fe; }
+  .gl-next-item.is-active { background: var(--blue-soft); border-color: rgba(29,111,242,0.30); }
+  .gl-next-img {
+    width: 76px; height: 58px; flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .gl-next-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .gl-next-num { font-size: 0.7rem; font-weight: 800; color: var(--blue); }
+  .gl-next-title {
+    font-size: 0.85rem; font-weight: 700; line-height: 1.3; color: var(--navy);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  /* ── Filmstrip ── */
+  .gl-strip {
+    position: relative; z-index: 1;
+    margin-top: 2.6rem;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .gl-track {
+    display: flex; gap: 1rem;
+    width: max-content;
+    animation: glMarquee 60s linear infinite;
+  }
+  .gl-strip:hover .gl-track { animation-play-state: paused; }
+  @keyframes glMarquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 0.5rem)); } }
+
+  .gl-tile {
+    position: relative;
+    width: 260px; height: 180px; flex-shrink: 0;
+    padding: 0; border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: #dfe8f5;
+    box-shadow: 0 10px 24px rgba(15,42,92,0.10);
+    transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
+  }
+  .gl-tile:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(15,42,92,0.18); }
+  .gl-tile-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(.22,1,.36,1); }
+  .gl-tile:hover .gl-tile-img { transform: scale(1.08); }
+  .gl-tile-label {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 2rem 0.9rem 0.8rem;
+    background: linear-gradient(to top, rgba(15,42,92,0.85), transparent);
+    color: #fff; font-size: 0.82rem; font-weight: 700; text-align: left;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .gl-tile:hover .gl-tile-label { opacity: 1; transform: none; }
+
+  /* ── Lightbox ── */
+  .gl-lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem 5rem;
+    background: rgba(7,18,40,0.92);
+    backdrop-filter: blur(10px);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.35s, visibility 0.35s;
+  }
+  .gl-lightbox.is-open { opacity: 1; visibility: visible; }
+  .gl-lb-figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; max-width: 100%; max-height: 100%; }
+  .gl-lb-figure img {
+    max-width: 100%; max-height: 80vh;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    transform: scale(0.94);
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+  }
+  .gl-lightbox.is-open .gl-lb-figure img { transform: scale(1); }
+  .gl-lb-figure figcaption { color: #fff; font-size: 1rem; font-weight: 700; text-align: center; }
+  .gl-lb-close, .gl-lb-nav {
+    position: absolute;
+    width: 50px; height: 50px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,0.12); color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .gl-lb-close svg, .gl-lb-nav svg { width: 22px; height: 22px; }
+  .gl-lb-close:hover, .gl-lb-nav:hover { background: var(--blue); border-color: var(--blue); }
+  .gl-lb-close { top: 1.5rem; right: 1.5rem; }
+  .gl-lb-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+  .gl-lb-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .gl-showcase { grid-template-columns: 1fr; }
+    .gl-side { height: auto; }
+    .gl-next-list { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 6px; }
+    .gl-next-item { flex-direction: column; align-items: flex-start; width: 150px; flex-shrink: 0; }
+    .gl-next-img { width: 100%; height: 90px; }
+    .gl-next-title { white-space: normal; }
+  }
+  @media (max-width: 680px) {
+    .gl { padding: 4.5rem 0 3.5rem; }
+    .gl-head { flex-direction: column; align-items: flex-start; }
+    .gl-stage { height: 380px; border-radius: 20px; }
+    .gl-caption { left: 1.2rem; right: 4.5rem; bottom: 1.4rem; }
+    .gl-expand { right: 1rem; bottom: 1.4rem; width: 42px; height: 42px; }
+    .gl-tile { width: 200px; height: 140px; }
+    .gl-lightbox { padding: 4.5rem 1rem; }
+    .gl-lb-prev, .gl-lb-next { top: auto; bottom: 1.5rem; transform: none; }
+    .gl-lb-prev { left: calc(50% - 60px); }
+    .gl-lb-next { right: calc(50% - 60px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gl-orb, .gl-track, .gl-slide.is-active .gl-slide-img, .gl-live-dot { animation: none; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    function init() {
+      var root = document.getElementById('gallery');
+      if (!root) return;
+
+      var SLIDE_TIME = 5000; // har photo kitni der dikhe (ms)
+
+      var slides   = root.querySelectorAll('.gl-slide');
+      var sideBtns = root.querySelectorAll('.gl-next-item');
+      var list     = root.querySelector('[data-gl="nextlist"]');
+      var curEl    = root.querySelector('[data-gl="current"]');
+      var titleEl  = root.querySelector('[data-gl="title"]');
+      var bar      = root.querySelector('[data-gl="bar"]');
+      var toggle   = root.querySelector('[data-gl="toggle"]');
+      var total    = slides.length;
+
+      var titles = Array.prototype.map.call(sideBtns, function (b) {
+        return b.querySelector('.gl-next-title').textContent;
+      });
+
+      var cur = 0;
+      var timer = null;
+      var paused = false;
+      var inView = false;
+
+      function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+      function restartBar() {
+        bar.classList.remove('is-running');
+        void bar.offsetWidth;            // animation reset
+        if (!paused && inView) bar.classList.add('is-running');
+      }
+
+      function show(i) {
+        cur = (i + total) % total;
+        slides.forEach(function (s, k) { s.classList.toggle('is-active', k === cur); });
+        sideBtns.forEach(function (b, k) { b.classList.toggle('is-active', k === cur); });
+
+        curEl.textContent = pad(cur + 1);
+        titleEl.classList.add('is-swap');
+        titleEl.textContent = titles[cur];
+        void titleEl.offsetWidth;
+        titleEl.classList.remove('is-swap');
+
+        // Active item ko side list mein nazar mein rakho
+        var active = sideBtns[cur];
+        if (active && list) {
+          if (list.scrollHeight > list.clientHeight) {
+            list.scrollTop = active.offsetTop - list.offsetTop - 8;
+          } else {
+            list.scrollLeft = active.offsetLeft - list.offsetLeft - 8;
+          }
+        }
+        schedule();
+      }
+
+      function schedule() {
+        clearTimeout(timer);
+        restartBar();
+        if (!paused && inView) {
+          timer = setTimeout(function () { show(cur + 1); }, SLIDE_TIME);
+        }
+      }
+
+      function setPaused(p) {
+        paused = p;
+        root.classList.toggle('is-paused', p);
+        toggle.setAttribute('aria-label', p ? 'Play slideshow' : 'Pause slideshow');
+        schedule();
+      }
+
+      root.querySelector('[data-gl="prev"]').addEventListener('click', function () { show(cur - 1); });
+      root.querySelector('[data-gl="next"]').addEventListener('click', function () { show(cur + 1); });
+      toggle.addEventListener('click', function () { setPaused(!paused); });
+      sideBtns.forEach(function (b, k) { b.addEventListener('click', function () { show(k); }); });
+
+      // Swipe on mobile
+      var stage = root.querySelector('[data-gl="stage"]');
+      var sx = 0;
+      stage.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - sx;
+        if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+      });
+
+      // Sirf tab chalay jab section screen par ho
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          schedule();
+        }, { threshold: 0.25 }).observe(root);
+      } else {
+        inView = true;
+      }
+
+      // ── Lightbox ──
+      var lb     = root.querySelector('[data-gl="lightbox"]');
+      var lbImg  = root.querySelector('[data-gl="lb-img"]');
+      var lbCap  = root.querySelector('[data-gl="lb-cap"]');
+      var lbIdx  = 0;
+      var wasPaused = false;
+
+      function bigSrc(i) {
+        var img = slides[i].querySelector('img');
+        return img.currentSrc || img.src;
+      }
+      function lbShow(i) {
+        lbIdx = (i + total) % total;
+        lbImg.src = bigSrc(lbIdx);
+        lbImg.alt = titles[lbIdx];
+        lbCap.textContent = pad(lbIdx + 1) + ' / ' + pad(total) + '  ·  ' + titles[lbIdx];
+      }
+      function lbOpen(i) {
+        // lazy slide image ko pehle load karwa do
+        var img = slides[(i + total) % total].querySelector('img');
+        img.loading = 'eager';
+        lbShow(i);
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.documentElement.style.overflow = 'hidden';
+        wasPaused = paused;
+        setPaused(true);
+      }
+      function lbClose() {
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.documentElement.style.overflow = '';
+        setPaused(wasPaused);
+      }
+
+      root.querySelector('[data-gl="expand"]').addEventListener('click', function () { lbOpen(cur); });
+      root.querySelectorAll('.gl-tile').forEach(function (t) {
+        t.addEventListener('click', function () { lbOpen(parseInt(t.getAttribute('data-index'), 10)); });
+      });
+      root.querySelector('[data-gl="lb-close"]').addEventListener('click', lbClose);
+      root.querySelector('[data-gl="lb-prev"]').addEventListener('click', function () { lbShow(lbIdx - 1); });
+      root.querySelector('[data-gl="lb-next"]').addEventListener('click', function () { lbShow(lbIdx + 1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) lbClose(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape') lbClose();
+        if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+        if (e.key === 'ArrowLeft') lbShow(lbIdx - 1);
+      });
+
+      show(0);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+  })();
+</script>

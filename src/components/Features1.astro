@@ -1,0 +1,412 @@
+---
+import { Image } from 'astro:assets';
+import feature1 from '../assets/images/feature1.jpg';
+import feature2 from '../assets/images/feature2.jpg';
+import feature3 from '../assets/images/feature3.jpg';
+
+const services = [
+  { title: 'Residential Construction', text: 'Modern living spaces built for your future.', icon: 'home' },
+  { title: 'Commercial Construction', text: 'Functional spaces for business growth.', icon: 'building' },
+  { title: 'Industrial Construction', text: 'Robust structures for long-term performance.', icon: 'factory' },
+  { title: 'Renovation & Remodeling', text: 'New life for your existing spaces.', icon: 'wrench' },
+  { title: 'Project Management', text: 'On-time delivery with complete transparency.', icon: 'helmet' },
+];
+
+const stats = [
+  { value: '10+', label: 'Years of Experience' },
+  { value: '50+', label: 'Projects Completed' },
+  { value: '100%', label: 'Client Satisfaction' },
+];
+
+const projects = [
+  { img: feature1, title: 'Skyline Residency', type: 'Residential' },
+  { img: feature2, title: 'Metro Business Hub', type: 'Commercial' },
+  { img: feature3, title: 'Prime Industrial Park', type: 'Industrial' },
+];
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+
+<section class="gx" id="features">
+
+  <!-- ══════════ Services strip (Hero ke upar overlap) ══════════ -->
+  <div class="gx-container">
+    <div class="gx-services" data-gsap="fade-up">
+      {services.map((s) => (
+        <div class="gx-service" data-gsap-item>
+          <div class="gx-service-icon">
+            {s.icon === 'home' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
+            )}
+            {s.icon === 'building' && (
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 21V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v12h2v2H3v-2h2Zm2 0h3v-3h2v3h1V5H7v16Zm8 0h2V10h-2v11ZM8.5 7h1.5v2H8.5V7Zm0 3.5h1.5v2H8.5v-2Zm0 3.5h1.5v2H8.5v-2ZM11 7h1.5v2H11V7Zm0 3.5h1.5v2H11v-2Zm0 3.5h1.5v2H11v-2Z"/></svg>
+            )}
+            {s.icon === 'factory' && (
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21V9l6 3V9l6 3V4h3v-1h2v1h2v17H2Zm4-5v2h2v-2H6Zm4 0v2h2v-2h-2Zm4 0v2h2v-2h-2Z"/></svg>
+            )}
+            {s.icon === 'wrench' && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13a6 6 0 0 1-7.6 1.9L6 22.3a2.1 2.1 0 0 1-3-3l7.4-7.4A6 6 0 0 1 12.3 4.3l1.7-1.3a4 4 0 0 0 .7 3.3Z"/></svg>
+            )}
+            {s.icon === 'helmet' && (
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4h4v1.2A8 8 0 0 1 20 13v2h1.5v3h-19v-3H4v-2a8 8 0 0 1 6-7.8V4Zm0 3.3A6 6 0 0 0 6 13v2h4V7.3Zm4 0V15h4v-2a6 6 0 0 0-4-5.7Z"/></svg>
+            )}
+          </div>
+          <div>
+            <h3 class="gx-service-title">{s.title}</h3>
+            <p class="gx-service-text">{s.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ══════════ About Gallop ══════════ -->
+  <div class="gx-container gx-about">
+
+    <!-- Left -->
+    <div class="gx-about-text">
+      <div class="gx-eyebrow" data-gsap="fade-left">
+        <span class="gx-eyebrow-line"></span>
+        About Gallop
+      </div>
+
+      <h2 class="gx-heading" data-gsap="fade-up">
+        Building Excellence<br />Since Day One
+      </h2>
+
+      <p class="gx-body" data-gsap="fade-up">
+        Gallop Construction is a trusted name in the construction industry, known for
+        delivering high-quality projects with precision, safety and innovation. We turn
+        ideas into reality with a commitment to excellence in every detail.
+      </p>
+
+      <div class="gx-stats" data-gsap="stagger">
+        {stats.map((s) => (
+          <div class="gx-stat" data-gsap-item>
+            <span class="gx-stat-val">{s.value}</span>
+            <span class="gx-stat-lbl">{s.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <a href="/about" class="gx-btn" data-gsap="fade-up">
+        Learn More
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <!-- Right -->
+    <div class="gx-about-visual" data-gsap="scale-in">
+      <img src="/Introimage.jpg" alt="Gallop Construction modern building with blueprints"
+        class="gx-intro-img" loading="eager" />
+
+      <div class="gx-badge">
+        <div class="gx-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 17v-3M12 17v-5M15 17v-2"/></svg>
+        </div>
+        <span>From Blueprint<br />to Reality</span>
+      </div>
+
+      <div class="gx-script">
+        We Build<br />Your Dreams
+        <svg class="gx-script-line" viewBox="0 0 160 20" fill="none"><path d="M2 16C50 6 110 4 158 2" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ Featured Projects ══════════ -->
+  <div class="gx-projects-wrap">
+    <div class="gx-container">
+      <div class="gx-projects-head">
+        <div>
+          <div class="gx-eyebrow" data-gsap="fade-left">
+            <span class="gx-eyebrow-line"></span>
+            Our Projects
+          </div>
+          <h2 class="gx-heading gx-heading-sm" data-gsap="fade-up">Featured Projects</h2>
+          <p class="gx-body gx-body-sm" data-gsap="fade-up">
+            Explore some of our latest projects and see how we bring ideas to life
+            with quality and precision.
+          </p>
+        </div>
+        <a href="/projects" class="gx-link">
+          View All Projects
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="gx-projects" data-gsap="stagger">
+        {projects.map((p) => (
+          <a href="/projects" class="gx-project" data-gsap-item>
+            <Image src={p.img} alt={p.title} class="gx-project-img" />
+            <div class="gx-project-info">
+              <span class="gx-project-type">{p.type}</span>
+              <h3 class="gx-project-title">{p.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gx {
+    --blue: #1d6ff2;
+    --blue-dark: #0b3d91;
+    --navy: #0f2a5c;
+    --text: #5b6b85;
+    --line: #e6edf7;
+    position: relative;
+    background: linear-gradient(180deg, #f3f7fd 0%, #f7faff 60%, #ffffff 100%);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--navy);
+    padding-bottom: 5rem;
+  }
+
+  .gx-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── Services strip ── */
+  .gx-services {
+    position: relative;
+    z-index: 30;
+    margin-top: -70px;            /* Hero ke upar overlap */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(15, 42, 92, 0.10);
+    padding: 1.6rem 0.5rem;
+  }
+  .gx-service {
+    display: flex;
+    gap: 14px;
+    padding: 0.4rem 1.4rem;
+    border-right: 1px solid var(--line);
+  }
+  .gx-service:last-child { border-right: none; }
+  .gx-service-icon {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #eaf2ff;
+    color: var(--blue);
+    display: grid; place-items: center;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+  }
+  .gx-service-icon svg { width: 30px; height: 30px; }
+  .gx-service:hover .gx-service-icon {
+    background: var(--blue); color: #fff; transform: translateY(-3px);
+  }
+  .gx-service-title {
+    margin: 0.35rem 0 0.5rem;
+    font-size: 0.95rem; font-weight: 700; line-height: 1.35;
+    color: var(--navy);
+  }
+  .gx-service-text {
+    margin: 0;
+    font-size: 0.8rem; line-height: 1.55;
+    color: #8593a8;
+  }
+
+  /* ── About ── */
+  .gx-about {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .gx-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.9rem;
+  }
+  .gx-eyebrow-line {
+    width: 34px; height: 3px; border-radius: 2px;
+    background: var(--blue);
+  }
+
+  .gx-heading {
+    margin: 0 0 1.4rem;
+    font-size: clamp(2rem, 3.4vw, 2.8rem);
+    font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--navy) !important;
+  }
+  .gx-heading :global(*) { color: inherit; }
+
+  .gx-body {
+    margin: 0 0 2rem;
+    max-width: 470px;
+    font-size: 1.02rem; line-height: 1.7;
+    color: var(--text);
+  }
+
+  .gx-stats { display: flex; flex-wrap: wrap; margin-bottom: 2.2rem; }
+  .gx-stat {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 0 1.6rem;
+    border-right: 1px solid #d7e0ee;
+  }
+  .gx-stat:first-child { padding-left: 0; }
+  .gx-stat:last-child { border-right: none; }
+  .gx-stat-val {
+    font-size: 2rem; font-weight: 800; line-height: 1;
+    color: var(--blue);
+  }
+  .gx-stat-lbl { font-size: 0.85rem; color: var(--text); }
+
+  .gx-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #fff !important;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(29, 111, 242, 0.30);
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .gx-btn:hover {
+    background: #155ad1;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(29, 111, 242, 0.40);
+  }
+  .gx-btn svg { transition: transform 0.25s; }
+  .gx-btn:hover svg { transform: translateX(4px); }
+
+  /* Right visual */
+  .gx-about-visual { position: relative; }
+  .gx-intro-img {
+    display: block;
+    width: 100%; height: auto;
+    mix-blend-mode: multiply;      /* white background blend ho jaye */
+    animation: gxFloat 6s ease-in-out infinite;
+  }
+  @keyframes gxFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .gx-badge {
+    position: absolute;
+    top: 8%; right: 0;
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 22px 12px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 30px rgba(15, 42, 92, 0.10);
+    font-weight: 700; font-size: 0.98rem; line-height: 1.35;
+    color: var(--navy);
+  }
+  .gx-badge-icon {
+    width: 46px; height: 52px;
+    border-radius: 10px;
+    background: linear-gradient(160deg, #2b7cff, #1257d6);
+    color: #fff;
+    display: grid; place-items: center;
+  }
+  .gx-badge-icon svg { width: 24px; height: 24px; }
+
+  .gx-script {
+    position: absolute;
+    top: 30%; right: 2%;
+    transform: rotate(-12deg);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.7rem; font-weight: 700; line-height: 1.1;
+    color: var(--navy);
+    text-align: center;
+  }
+  .gx-script-line {
+    display: block; width: 150px; height: 18px;
+    margin: 2px 0 0 20px;
+  }
+
+  /* ── Featured Projects ── */
+  .gx-projects-wrap { background: #fff; padding-top: 3rem; }
+  .gx-projects-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 2rem; margin-bottom: 2rem;
+  }
+  .gx-heading-sm { font-size: clamp(1.8rem, 2.8vw, 2.3rem); margin-bottom: 0.6rem; }
+  .gx-body-sm { font-size: 0.95rem; margin-bottom: 0; }
+
+  .gx-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; font-size: 0.92rem;
+    color: var(--blue); text-decoration: none;
+    white-space: nowrap;
+  }
+  .gx-link svg { transition: transform 0.25s; }
+  .gx-link:hover svg { transform: translateX(4px); }
+
+  .gx-projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .gx-project {
+    position: relative;
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(15, 42, 92, 0.08);
+  }
+  .gx-project-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(.22,1,.36,1);
+  }
+  .gx-project:hover .gx-project-img { transform: scale(1.06); }
+  .gx-project-info {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 1.2rem 1.3rem;
+    background: linear-gradient(to top, rgba(11, 30, 70, 0.85), transparent);
+  }
+  .gx-project-type {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #9cc2ff;
+  }
+  .gx-project-title {
+    margin: 4px 0 0;
+    font-size: 1.15rem; font-weight: 700;
+    color: #fff;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .gx-services { grid-template-columns: repeat(3, 1fr); row-gap: 1.2rem; }
+    .gx-service:nth-child(3) { border-right: none; }
+  }
+  @media (max-width: 900px) {
+    .gx-about { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
+    .gx-projects { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .gx-services { grid-template-columns: 1fr; margin-top: -40px; }
+    .gx-service { border-right: none; border-bottom: 1px solid var(--line); padding: 0.9rem 1.1rem; }
+    .gx-service:last-child { border-bottom: none; }
+    .gx-stat { padding: 0 1rem; }
+    .gx-badge { font-size: 0.82rem; padding: 8px 14px 8px 8px; }
+    .gx-badge-icon { width: 36px; height: 42px; }
+    .gx-script { font-size: 1.25rem; top: 34%; }
+    .gx-script-line { width: 100px; margin-left: 10px; }
+    .gx-projects-head { flex-direction: column; align-items: flex-start; }
+    .gx-projects { grid-template-columns: 1fr; }
+  }
+</style>
