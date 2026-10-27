@@ -169,17 +169,17 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
 <style>
   .gl {
-    --blue: #1d6ff2;
-    --blue-soft: #eaf2ff;
-    --navy: #0f2a5c;
-    --text: #5b6b85;
-    --line: #e2eaf6;
+    --blue: #f5a623;
+    --blue-soft: rgba(245,166,35,0.12);
+    --navy: #ffffff;
+    --text: #aab4c3;
+    --line: #263040;
     --slide-time: 5s;
     position: relative;
     width: 100%;
     padding: 6.5rem 0 5rem;
     overflow: hidden;
-    background: linear-gradient(180deg, #ffffff 0%, #f3f7fd 100%);
+    background: linear-gradient(180deg, #161d27 0%, #10151c 100%);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--navy);
   }
@@ -188,14 +188,14 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .gl-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .gl-dots {
     position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(29,111,242,0.13) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(245,166,35,0.13) 1.2px, transparent 1.2px);
     background-size: 26px 26px;
     mask-image: radial-gradient(ellipse at 15% 10%, #000 15%, transparent 55%);
     -webkit-mask-image: radial-gradient(ellipse at 15% 10%, #000 15%, transparent 55%);
   }
   .gl-orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: glFloat 18s ease-in-out infinite alternate; }
-  .gl-orb-1 { width: 460px; height: 460px; background: rgba(29,111,242,0.13); top: -160px; right: -120px; }
-  .gl-orb-2 { width: 380px; height: 380px; background: rgba(14,165,233,0.11); bottom: 0; left: -120px; animation-delay: -9s; }
+  .gl-orb-1 { width: 460px; height: 460px; background: rgba(245,166,35,0.13); top: -160px; right: -120px; }
+  .gl-orb-2 { width: 380px; height: 380px; background: rgba(245,158,11,0.11); bottom: 0; left: -120px; animation-delay: -9s; }
   @keyframes glFloat { to { transform: translate(-50px, 40px); } }
 
   .gl-container { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
@@ -222,15 +222,15 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .gl-ctrl {
     width: 50px; height: 50px; border-radius: 50%;
     display: grid; place-items: center;
-    background: #fff; color: var(--navy);
+    background: #161d27; color: var(--navy);
     border: 1px solid var(--line);
-    box-shadow: 0 6px 18px rgba(15,42,92,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.24);
     cursor: pointer;
     transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
   }
   .gl-ctrl svg { width: 20px; height: 20px; }
-  .gl-ctrl:hover { background: var(--blue); color: #fff; border-color: var(--blue); transform: translateY(-2px); }
-  .gl-ctrl-play { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .gl-ctrl:hover { background: var(--blue); color: #10151c; border-color: var(--blue); transform: translateY(-2px); }
+  .gl-ctrl-play { background: var(--blue); color: #10151c; border-color: var(--blue); }
   .gl-ico-play { display: none; }
   .gl.is-paused .gl-ico-play { display: block; }
   .gl.is-paused .gl-ico-pause { display: none; }
@@ -243,8 +243,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
     height: 560px;
     border-radius: 26px;
     overflow: hidden;
-    background: #0f2a5c;
-    box-shadow: 0 30px 60px rgba(15,42,92,0.22);
+    background: #151c26;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.66);
   }
   .gl-slide {
     position: absolute; inset: 0; margin: 0;
@@ -265,13 +265,13 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
   .gl-stage-shade {
     position: absolute; inset: 0; z-index: 2; pointer-events: none;
-    background: linear-gradient(to top, rgba(7,26,58,0.80) 0%, rgba(7,26,58,0.15) 45%, transparent 70%);
+    background: linear-gradient(to top, rgba(10,13,18,0.80) 0%, rgba(10,13,18,0.15) 45%, transparent 70%);
   }
 
   .gl-caption { position: absolute; left: 2rem; right: 6rem; bottom: 2.2rem; z-index: 3; }
   .gl-caption-count { display: inline-flex; align-items: baseline; gap: 6px; font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.7); }
   .gl-caption-count [data-gl="current"] { font-size: 1.6rem; font-weight: 800; color: #fff; }
-  .gl-caption-sep { color: #60a5fa; }
+  .gl-caption-sep { color: #fbbf24; }
   .gl-caption-title {
     margin: 0.3rem 0 0;
     font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; line-height: 1.2;
@@ -295,7 +295,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .gl-expand:hover { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
 
   .gl-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; z-index: 3; background: rgba(255,255,255,0.18); }
-  .gl-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #60a5fa, #1d6ff2); }
+  .gl-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #fbbf24, #f5a623); }
   .gl-progress span.is-running { animation: glBar var(--slide-time) linear forwards; }
   .gl.is-paused .gl-progress span { animation-play-state: paused; }
   @keyframes glBar { from { width: 0; } to { width: 100%; } }
@@ -305,10 +305,10 @@ const pad = (n: number) => String(n).padStart(2, '0');
     display: flex; flex-direction: column;
     height: 560px;
     padding: 1rem;
-    background: #fff;
+    background: #161d27;
     border: 1px solid var(--line);
     border-radius: 26px;
-    box-shadow: 0 16px 40px rgba(15,42,92,0.08);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.24);
   }
   .gl-side-head {
     display: flex; align-items: center; justify-content: space-between;
@@ -332,7 +332,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
     overflow-y: auto;
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #c9d8ef transparent;
+    scrollbar-color: #2f3a4b transparent;
     padding-right: 4px;
   }
   .gl-next-item {
@@ -347,8 +347,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
     font-family: inherit;
     transition: background 0.25s, border-color 0.25s;
   }
-  .gl-next-item:hover { background: #f5f8fe; }
-  .gl-next-item.is-active { background: var(--blue-soft); border-color: rgba(29,111,242,0.30); }
+  .gl-next-item:hover { background: #131a23; }
+  .gl-next-item.is-active { background: var(--blue-soft); border-color: rgba(245,166,35,0.30); }
   .gl-next-img {
     width: 76px; height: 58px; flex-shrink: 0;
     border-radius: 10px;
@@ -384,17 +384,17 @@ const pad = (n: number) => String(n).padStart(2, '0');
     border-radius: 16px;
     overflow: hidden;
     cursor: zoom-in;
-    background: #dfe8f5;
-    box-shadow: 0 10px 24px rgba(15,42,92,0.10);
+    background: #263040;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.30);
     transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
   }
-  .gl-tile:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(15,42,92,0.18); }
+  .gl-tile:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,0.54); }
   .gl-tile-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(.22,1,.36,1); }
   .gl-tile:hover .gl-tile-img { transform: scale(1.08); }
   .gl-tile-label {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 2rem 0.9rem 0.8rem;
-    background: linear-gradient(to top, rgba(15,42,92,0.85), transparent);
+    background: linear-gradient(to top, rgba(10,13,18,0.85), transparent);
     color: #fff; font-size: 0.82rem; font-weight: 700; text-align: left;
     opacity: 0; transform: translateY(8px);
     transition: opacity 0.3s, transform 0.3s;
@@ -406,7 +406,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
     position: fixed; inset: 0; z-index: 9999;
     display: flex; align-items: center; justify-content: center;
     padding: 2rem 5rem;
-    background: rgba(7,18,40,0.92);
+    background: rgba(10,13,18,0.92);
     backdrop-filter: blur(10px);
     opacity: 0; visibility: hidden;
     transition: opacity 0.35s, visibility 0.35s;

@@ -128,17 +128,17 @@ const trustBar = [
 
 <style>
   .tr {
-    --blue: #1d6ff2;
-    --blue-soft: #eaf2ff;
-    --navy: #0f2a5c;
-    --text: #5b6b85;
-    --line: #e2eaf6;
+    --blue: #f5a623;
+    --blue-soft: rgba(245,166,35,0.12);
+    --navy: #ffffff;
+    --text: #aab4c3;
+    --line: #263040;
     position: relative;
     width: 100%;
     padding: 6.5rem 1.5rem;
     overflow: hidden;
     isolation: isolate;
-    background: linear-gradient(180deg, #f3f7fd 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #10151c 0%, #161d27 100%);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--navy);
   }
@@ -148,8 +148,8 @@ const trustBar = [
   .tr-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(29,111,242,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(29,111,242,0.06) 1px, transparent 1px);
+      linear-gradient(rgba(245,166,35,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,166,35,0.06) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 70%);
@@ -159,8 +159,8 @@ const trustBar = [
     filter: blur(100px);
     animation: trFloat 18s ease-in-out infinite alternate;
   }
-  .tr-orb-1 { width: 420px; height: 420px; background: rgba(29,111,242,0.14); top: -140px; right: -100px; }
-  .tr-orb-2 { width: 360px; height: 360px; background: rgba(14,165,233,0.12); bottom: -120px; left: -100px; animation-delay: -9s; }
+  .tr-orb-1 { width: 420px; height: 420px; background: rgba(245,166,35,0.14); top: -140px; right: -100px; }
+  .tr-orb-2 { width: 360px; height: 360px; background: rgba(245,158,11,0.12); bottom: -120px; left: -100px; animation-delay: -9s; }
   @keyframes trFloat {
     from { transform: translate(0, 0); }
     to   { transform: translate(-50px, 40px); }
@@ -200,10 +200,10 @@ const trustBar = [
     position: relative;
     display: flex; flex-direction: column;
     padding: 2rem 1.8rem 1.6rem;
-    background: #fff;
+    background: #161d27;
     border: 1px solid var(--line);
     border-radius: 22px;
-    box-shadow: 0 10px 30px rgba(15,42,92,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     overflow: hidden;
     transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s, border-color 0.35s;
   }
@@ -211,15 +211,15 @@ const trustBar = [
     content: '';
     position: absolute; top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #2b7cff, #0ea5e9);
+    background: linear-gradient(90deg, #ffb84d, #f59e0b);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.45s cubic-bezier(.22,1,.36,1);
   }
   .tr-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(29,111,242,0.30);
-    box-shadow: 0 22px 44px rgba(15,42,92,0.12);
+    border-color: rgba(245,166,35,0.30);
+    box-shadow: 0 22px 44px rgba(0,0,0,0.36);
   }
   .tr-card:hover::before { transform: scaleX(1); }
 
@@ -231,8 +231,8 @@ const trustBar = [
     width: 74px; height: 74px;
     border-radius: 50%;
     display: grid; place-items: center;
-    background: linear-gradient(150deg, #2b7cff, #1257d6);
-    box-shadow: 0 10px 24px rgba(29,111,242,0.30), inset 0 0 0 5px rgba(255,255,255,0.22);
+    background: linear-gradient(150deg, #ffb84d, #d98a0b);
+    box-shadow: 0 10px 24px rgba(245,166,35,0.30), inset 0 0 0 5px rgba(255,255,255,0.22);
     transition: transform 0.4s;
   }
   .tr-card:hover .tr-seal { transform: rotate(-8deg) scale(1.05); }
@@ -293,8 +293,8 @@ const trustBar = [
     grid-template-columns: repeat(4, 1fr);
     padding: 1.6rem 1rem;
     border-radius: 20px;
-    background: linear-gradient(120deg, #0f2a5c 0%, #123a80 55%, #1d6ff2 100%);
-    box-shadow: 0 20px 44px rgba(15,42,92,0.22);
+    background: linear-gradient(120deg, #151c26 0%, #1c2532 55%, #f5a623 100%);
+    box-shadow: 0 20px 44px rgba(0,0,0,0.66);
   }
   .tr-bar-item {
     display: flex; align-items: center; gap: 12px;

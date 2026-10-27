@@ -109,7 +109,7 @@ const projects = [
 
       <div class="gx-script">
         We Build<br />Your Dreams
-        <svg class="gx-script-line" viewBox="0 0 160 20" fill="none"><path d="M2 16C50 6 110 4 158 2" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="gx-script-line" viewBox="0 0 160 20" fill="none"><path d="M2 16C50 6 110 4 158 2" stroke="#f5a623" stroke-width="2" stroke-linecap="round"/></svg>
       </div>
     </div>
   </div>
@@ -152,13 +152,13 @@ const projects = [
 
 <style>
   .gx {
-    --blue: #1d6ff2;
-    --blue-dark: #0b3d91;
-    --navy: #0f2a5c;
-    --text: #5b6b85;
-    --line: #e6edf7;
+    --blue: #f5a623;
+    --blue-dark: #b8740a;
+    --navy: #ffffff;
+    --text: #aab4c3;
+    --line: #263040;
     position: relative;
-    background: linear-gradient(180deg, #f3f7fd 0%, #f7faff 60%, #ffffff 100%);
+    background: linear-gradient(180deg, #10151c 0%, #131a23 60%, #161d27 100%);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--navy);
     padding-bottom: 5rem;
@@ -178,9 +178,9 @@ const projects = [
     margin-top: -70px;            /* Hero ke upar overlap */
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    background: #fff;
+    background: #161d27;
     border-radius: 18px;
-    box-shadow: 0 20px 50px rgba(15, 42, 92, 0.10);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.30);
     padding: 1.6rem 0.5rem;
   }
   .gx-service {
@@ -194,14 +194,14 @@ const projects = [
     flex-shrink: 0;
     width: 56px; height: 56px;
     border-radius: 50%;
-    background: #eaf2ff;
+    background: rgba(245,166,35,0.12);
     color: var(--blue);
     display: grid; place-items: center;
     transition: background 0.3s, color 0.3s, transform 0.3s;
   }
   .gx-service-icon svg { width: 30px; height: 30px; }
   .gx-service:hover .gx-service-icon {
-    background: var(--blue); color: #fff; transform: translateY(-3px);
+    background: var(--blue); color: #10151c; transform: translateY(-3px);
   }
   .gx-service-title {
     margin: 0.35rem 0 0.5rem;
@@ -211,7 +211,7 @@ const projects = [
   .gx-service-text {
     margin: 0;
     font-size: 0.8rem; line-height: 1.55;
-    color: #8593a8;
+    color: #8a94a3;
   }
 
   /* ── About ── */
@@ -256,7 +256,7 @@ const projects = [
   .gx-stat {
     display: flex; flex-direction: column; gap: 6px;
     padding: 0 1.6rem;
-    border-right: 1px solid #d7e0ee;
+    border-right: 1px solid #263040;
   }
   .gx-stat:first-child { padding-left: 0; }
   .gx-stat:last-child { border-right: none; }
@@ -271,16 +271,16 @@ const projects = [
     padding: 14px 30px;
     border-radius: 999px;
     background: var(--blue);
-    color: #fff !important;
+    color: #10151c !important;
     font-weight: 600; font-size: 0.95rem;
     text-decoration: none;
-    box-shadow: 0 10px 24px rgba(29, 111, 242, 0.30);
+    box-shadow: 0 10px 24px rgba(245,166,35,0.30);
     transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
   }
   .gx-btn:hover {
-    background: #155ad1;
+    background: #e0951a;
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(29, 111, 242, 0.40);
+    box-shadow: 0 14px 30px rgba(245,166,35,0.40);
   }
   .gx-btn svg { transition: transform 0.25s; }
   .gx-btn:hover svg { transform: translateX(4px); }
@@ -290,7 +290,7 @@ const projects = [
   .gx-intro-img {
     display: block;
     width: 100%; height: auto;
-    mix-blend-mode: multiply;      /* white background blend ho jaye */
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.45));
     animation: gxFloat 6s ease-in-out infinite;
   }
   @keyframes gxFloat {
@@ -304,17 +304,17 @@ const projects = [
     display: flex; align-items: center; gap: 14px;
     padding: 12px 22px 12px 12px;
     border-radius: 14px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(22,29,39,0.85);
     backdrop-filter: blur(8px);
-    box-shadow: 0 12px 30px rgba(15, 42, 92, 0.10);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.30);
     font-weight: 700; font-size: 0.98rem; line-height: 1.35;
     color: var(--navy);
   }
   .gx-badge-icon {
     width: 46px; height: 52px;
     border-radius: 10px;
-    background: linear-gradient(160deg, #2b7cff, #1257d6);
-    color: #fff;
+    background: linear-gradient(160deg, #ffb84d, #d98a0b);
+    color: #10151c;
     display: grid; place-items: center;
   }
   .gx-badge-icon svg { width: 24px; height: 24px; }
@@ -334,7 +334,7 @@ const projects = [
   }
 
   /* ── Featured Projects ── */
-  .gx-projects-wrap { background: #fff; padding-top: 3rem; }
+  .gx-projects-wrap { background: #161d27; padding-top: 3rem; }
   .gx-projects-head {
     display: flex; align-items: flex-end; justify-content: space-between;
     gap: 2rem; margin-bottom: 2rem;
@@ -363,7 +363,7 @@ const projects = [
     overflow: hidden;
     aspect-ratio: 4 / 3;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(15, 42, 92, 0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.24);
   }
   .gx-project-img {
     width: 100%; height: 100%;
@@ -374,13 +374,13 @@ const projects = [
   .gx-project-info {
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 1.2rem 1.3rem;
-    background: linear-gradient(to top, rgba(11, 30, 70, 0.85), transparent);
+    background: linear-gradient(to top, rgba(10,13,18,0.85), transparent);
   }
   .gx-project-type {
     display: inline-block;
     font-size: 0.72rem; font-weight: 700;
     letter-spacing: 0.06em; text-transform: uppercase;
-    color: #9cc2ff;
+    color: #fcd34d;
   }
   .gx-project-title {
     margin: 4px 0 0;

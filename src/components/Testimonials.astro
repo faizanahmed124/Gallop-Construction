@@ -178,18 +178,18 @@ const initials = (n: string) => n.split(' ').map(w => w[0]).slice(0, 2).join('')
 
 <style>
   .ts {
-    --blue: #1d6ff2;
-    --blue-soft: #eaf2ff;
-    --navy: #0f2a5c;
-    --text: #5b6b85;
-    --line: #e2eaf6;
-    --bg-edge: #f3f7fd;
+    --blue: #f5a623;
+    --blue-soft: rgba(245,166,35,0.12);
+    --navy: #ffffff;
+    --text: #aab4c3;
+    --line: #263040;
+    --bg-edge: #10151c;
     position: relative;
     width: 100%;
     padding: 6.5rem 0 5.5rem;
     overflow: hidden;
     isolation: isolate;
-    background: linear-gradient(180deg, #ffffff 0%, var(--bg-edge) 100%);
+    background: linear-gradient(180deg, #161d27 0%, var(--bg-edge) 100%);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--navy);
   }
@@ -198,14 +198,14 @@ const initials = (n: string) => n.split(' ').map(w => w[0]).slice(0, 2).join('')
   .ts-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
   .ts-dots {
     position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(29,111,242,0.12) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(245,166,35,0.12) 1.2px, transparent 1.2px);
     background-size: 26px 26px;
     mask-image: radial-gradient(ellipse at 50% 0%, #000 15%, transparent 55%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 15%, transparent 55%);
   }
   .ts-orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: tsFloat 18s ease-in-out infinite alternate; }
-  .ts-orb-1 { width: 420px; height: 420px; background: rgba(29,111,242,0.12); top: 10%; left: -160px; }
-  .ts-orb-2 { width: 380px; height: 380px; background: rgba(14,165,233,0.10); bottom: 0; right: -140px; animation-delay: -9s; }
+  .ts-orb-1 { width: 420px; height: 420px; background: rgba(245,166,35,0.12); top: 10%; left: -160px; }
+  .ts-orb-2 { width: 380px; height: 380px; background: rgba(245,158,11,0.10); bottom: 0; right: -140px; animation-delay: -9s; }
   @keyframes tsFloat { to { transform: translate(60px, -40px); } }
 
   .ts-container { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
@@ -249,16 +249,16 @@ const initials = (n: string) => n.split(' ').map(w => w[0]).slice(0, 2).join('')
     width: 380px;
     display: flex; flex-direction: column;
     padding: 1.6rem 1.6rem 1.4rem;
-    background: #fff;
+    background: #161d27;
     border: 1px solid var(--line);
     border-radius: 22px;
-    box-shadow: 0 10px 28px rgba(15,42,92,0.06);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
     transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s, border-color 0.35s;
   }
   .ts-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(29,111,242,0.30);
-    box-shadow: 0 22px 44px rgba(15,42,92,0.12);
+    border-color: rgba(245,166,35,0.30);
+    box-shadow: 0 22px 44px rgba(0,0,0,0.36);
   }
   .ts-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; }
   .ts-quote { width: 38px; height: 38px; color: var(--blue); opacity: 0.9; }
@@ -269,14 +269,14 @@ const initials = (n: string) => n.split(' ').map(w => w[0]).slice(0, 2).join('')
   }
 
   .ts-stars { display: flex; gap: 3px; margin-bottom: 0.8rem; }
-  .ts-stars svg { width: 16px; height: 16px; fill: #d6e2f3; }
+  .ts-stars svg { width: 16px; height: 16px; fill: #263040; }
   .ts-stars svg.on { fill: #f5b301; }
 
   .ts-text {
     flex: 1;
     margin: 0 0 1.3rem;
     font-size: 0.95rem; line-height: 1.7;
-    color: #34476b;
+    color: #aab4c3;
   }
 
   .ts-person {
@@ -288,9 +288,9 @@ const initials = (n: string) => n.split(' ').map(w => w[0]).slice(0, 2).join('')
     width: 46px; height: 46px; flex-shrink: 0;
     border-radius: 50%;
     display: grid; place-items: center;
-    background: linear-gradient(150deg, #2b7cff, #1257d6);
-    color: #fff; font-size: 0.9rem; font-weight: 800;
-    box-shadow: 0 6px 14px rgba(29,111,242,0.30);
+    background: linear-gradient(150deg, #ffb84d, #d98a0b);
+    color: #10151c; font-size: 0.9rem; font-weight: 800;
+    box-shadow: 0 6px 14px rgba(245,166,35,0.30);
   }
   .ts-name { display: block; font-size: 0.98rem; font-weight: 700; color: var(--navy); }
   .ts-role { display: block; margin-top: 2px; font-size: 0.8rem; color: var(--text); }
@@ -301,8 +301,8 @@ const initials = (n: string) => n.split(' ').map(w => w[0]).slice(0, 2).join('')
     display: grid; grid-template-columns: repeat(4, 1fr);
     padding: 1.8rem 1rem;
     border-radius: 22px;
-    background: linear-gradient(120deg, #0f2a5c 0%, #123a80 55%, #1d6ff2 100%);
-    box-shadow: 0 20px 44px rgba(15,42,92,0.22);
+    background: linear-gradient(120deg, #151c26 0%, #1c2532 55%, #f5a623 100%);
+    box-shadow: 0 20px 44px rgba(0,0,0,0.66);
   }
   .ts-stat {
     display: flex; flex-direction: column; align-items: center; gap: 6px;

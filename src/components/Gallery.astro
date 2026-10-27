@@ -148,17 +148,17 @@ const services = [
 
 <style>
   .sv {
-    --blue: #1d6ff2;
-    --blue-soft: #eaf2ff;
-    --navy: #0f2a5c;
-    --text: #5b6b85;
-    --line: #e2eaf6;
+    --blue: #f5a623;
+    --blue-soft: rgba(245,166,35,0.12);
+    --navy: #ffffff;
+    --text: #aab4c3;
+    --line: #263040;
     position: relative;
     width: 100%;
     padding: 6.5rem 1.5rem;
     overflow: hidden;
     isolation: isolate;
-    background: linear-gradient(180deg, #f3f7fd 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #10151c 0%, #161d27 100%);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--navy);
   }
@@ -167,14 +167,14 @@ const services = [
   .sv-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .sv-dots {
     position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(29,111,242,0.13) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(245,166,35,0.13) 1.2px, transparent 1.2px);
     background-size: 26px 26px;
     mask-image: radial-gradient(ellipse at 85% 15%, #000 15%, transparent 55%);
     -webkit-mask-image: radial-gradient(ellipse at 85% 15%, #000 15%, transparent 55%);
   }
   .sv-orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: svFloat 18s ease-in-out infinite alternate; }
-  .sv-orb-1 { width: 420px; height: 420px; background: rgba(29,111,242,0.13); top: -160px; left: -120px; }
-  .sv-orb-2 { width: 360px; height: 360px; background: rgba(14,165,233,0.11); bottom: -140px; right: -100px; animation-delay: -9s; }
+  .sv-orb-1 { width: 420px; height: 420px; background: rgba(245,166,35,0.13); top: -160px; left: -120px; }
+  .sv-orb-2 { width: 360px; height: 360px; background: rgba(245,158,11,0.11); bottom: -140px; right: -100px; animation-delay: -9s; }
   @keyframes svFloat { to { transform: translate(50px, 40px); } }
 
   .sv-container { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; }
@@ -212,10 +212,10 @@ const services = [
     padding: 14px 30px;
     border-radius: 999px;
     background: var(--blue);
-    color: #fff !important;
+    color: #10151c !important;
     font-weight: 600; font-size: 0.95rem;
     text-decoration: none;
-    box-shadow: 0 10px 24px rgba(29,111,242,0.30);
+    box-shadow: 0 10px 24px rgba(245,166,35,0.30);
     transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
   }
   .sv-btn::before {
@@ -225,7 +225,7 @@ const services = [
     transition: left 0.6s ease;
   }
   .sv-btn:hover::before { left: 100%; }
-  .sv-btn:hover { background: #155ad1; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(29,111,242,0.40); }
+  .sv-btn:hover { background: #e0951a; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(245,166,35,0.40); }
   .sv-btn svg { position: relative; transition: transform 0.25s; }
   .sv-btn:hover svg { transform: translateX(4px); }
 
@@ -234,32 +234,32 @@ const services = [
 
   .sv-card {
     display: flex; flex-direction: column;
-    background: #fff;
+    background: #161d27;
     border: 1px solid var(--line);
     border-radius: 22px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(15,42,92,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s, border-color 0.4s;
   }
   .sv-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(29,111,242,0.30);
-    box-shadow: 0 26px 50px rgba(15,42,92,0.14);
+    border-color: rgba(245,166,35,0.30);
+    box-shadow: 0 26px 50px rgba(0,0,0,0.42);
   }
 
-  .sv-media { position: relative; height: 220px; overflow: hidden; background: #dfe8f5; }
+  .sv-media { position: relative; height: 220px; overflow: hidden; background: #263040; }
   .sv-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(.22,1,.36,1); }
   .sv-card:hover .sv-img { transform: scale(1.08); }
   .sv-shade {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(15,42,92,0.55) 0%, transparent 55%);
+    background: linear-gradient(to top, rgba(10,13,18,0.55) 0%, transparent 55%);
   }
   .sv-tag {
     position: absolute; top: 14px; left: 14px;
     display: inline-flex; align-items: center; gap: 7px;
     padding: 6px 13px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.94);
+    background: rgba(22,29,39,0.94);
     font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--blue);
@@ -276,10 +276,10 @@ const services = [
     width: 58px; height: 58px;
     margin-top: -29px; margin-bottom: 1rem;
     border-radius: 16px;
-    background: linear-gradient(150deg, #2b7cff, #1257d6);
-    color: #fff;
+    background: linear-gradient(150deg, #ffb84d, #d98a0b);
+    color: #10151c;
     display: grid; place-items: center;
-    box-shadow: 0 0 0 5px #fff, 0 12px 26px rgba(29,111,242,0.30);
+    box-shadow: 0 0 0 5px #fff, 0 12px 26px rgba(245,166,35,0.30);
     position: relative; z-index: 1;
     transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
   }
@@ -315,7 +315,7 @@ const services = [
     transition: background 0.3s, color 0.3s, transform 0.3s;
   }
   .sv-more svg { width: 17px; height: 17px; }
-  .sv-card:hover .sv-more { background: var(--blue); color: #fff; transform: rotate(45deg); }
+  .sv-card:hover .sv-more { background: var(--blue); color: #10151c; transform: rotate(45deg); }
 
   .sv-mobile-cta { display: none; margin-top: 2.5rem; justify-content: center; }
 

@@ -102,17 +102,17 @@ const highlights = [
 
 <style>
   .pj {
-    --blue: #1d6ff2;
-    --blue-soft: #eaf2ff;
-    --navy: #0f2a5c;
-    --text: #5b6b85;
-    --line: #e2eaf6;
+    --blue: #f5a623;
+    --blue-soft: rgba(245,166,35,0.12);
+    --navy: #ffffff;
+    --text: #aab4c3;
+    --line: #263040;
     position: relative;
     width: 100%;
     padding: 6.5rem 1.5rem;
     overflow: hidden;
     isolation: isolate;
-    background: linear-gradient(180deg, #ffffff 0%, #f3f7fd 100%);
+    background: linear-gradient(180deg, #161d27 0%, #10151c 100%);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: var(--navy);
   }
@@ -121,7 +121,7 @@ const highlights = [
   .pj-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .pj-dots {
     position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(29,111,242,0.13) 1.2px, transparent 1.2px);
+    background-image: radial-gradient(rgba(245,166,35,0.13) 1.2px, transparent 1.2px);
     background-size: 26px 26px;
     mask-image: radial-gradient(ellipse at 20% 20%, #000 15%, transparent 60%);
     -webkit-mask-image: radial-gradient(ellipse at 20% 20%, #000 15%, transparent 60%);
@@ -131,8 +131,8 @@ const highlights = [
     filter: blur(100px);
     animation: pjFloat 18s ease-in-out infinite alternate;
   }
-  .pj-orb-1 { width: 420px; height: 420px; background: rgba(29,111,242,0.13); top: -150px; right: -120px; }
-  .pj-orb-2 { width: 360px; height: 360px; background: rgba(14,165,233,0.11); bottom: -140px; left: -100px; animation-delay: -9s; }
+  .pj-orb-1 { width: 420px; height: 420px; background: rgba(245,166,35,0.13); top: -150px; right: -120px; }
+  .pj-orb-2 { width: 360px; height: 360px; background: rgba(245,158,11,0.11); bottom: -140px; left: -100px; animation-delay: -9s; }
   @keyframes pjFloat {
     from { transform: translate(0, 0); }
     to   { transform: translate(-50px, 40px); }
@@ -168,10 +168,10 @@ const highlights = [
   .pj-highlights {
     display: flex; flex-shrink: 0;
     padding: 1.1rem 0.4rem;
-    background: #fff;
+    background: #161d27;
     border: 1px solid var(--line);
     border-radius: 18px;
-    box-shadow: 0 10px 28px rgba(15,42,92,0.06);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
   }
   .pj-hl {
     display: flex; flex-direction: column; gap: 4px;
@@ -190,18 +190,18 @@ const highlights = [
   }
   .pj-card {
     display: flex; flex-direction: column;
-    background: #fff;
+    background: #161d27;
     border: 1px solid var(--line);
     border-radius: 20px;
     overflow: hidden;
     text-decoration: none;
-    box-shadow: 0 10px 28px rgba(15,42,92,0.06);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
     transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s, border-color 0.4s;
   }
   .pj-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(29,111,242,0.30);
-    box-shadow: 0 24px 48px rgba(15,42,92,0.14);
+    border-color: rgba(245,166,35,0.30);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.42);
   }
 
   /* Reveal animation (sirf jab JS chale) */
@@ -226,7 +226,7 @@ const highlights = [
   .pj-media::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(15,42,92,0.45), transparent 55%);
+    background: linear-gradient(to top, rgba(10,13,18,0.45), transparent 55%);
     opacity: 0.7;
     transition: opacity 0.4s;
   }
@@ -236,7 +236,7 @@ const highlights = [
     position: absolute; top: 14px; left: 14px; z-index: 1;
     padding: 6px 12px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.92);
+    background: rgba(22,29,39,0.92);
     font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.06em; text-transform: uppercase;
     color: var(--blue);
@@ -246,7 +246,7 @@ const highlights = [
     width: 42px; height: 42px;
     border-radius: 50%;
     background: var(--blue);
-    color: #fff;
+    color: #10151c;
     display: grid; place-items: center;
     transform: scale(0.6) rotate(-45deg);
     opacity: 0;
@@ -282,10 +282,10 @@ const highlights = [
     border-radius: 999px;
     background: var(--blue);
     border: 1.5px solid var(--blue);
-    color: #fff !important;
+    color: #10151c !important;
     font-weight: 600; font-size: 0.95rem;
     text-decoration: none;
-    box-shadow: 0 10px 24px rgba(29,111,242,0.30);
+    box-shadow: 0 10px 24px rgba(245,166,35,0.30);
     transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
   }
   .pj-btn::before {
@@ -297,11 +297,11 @@ const highlights = [
   }
   .pj-btn:hover::before { left: 100%; }
   .pj-btn > * { position: relative; z-index: 1; }
-  .pj-btn:hover { background: #155ad1; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(29,111,242,0.40); }
+  .pj-btn:hover { background: #e0951a; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(245,166,35,0.40); }
   .pj-btn svg { transition: transform 0.25s; }
   .pj-btn:hover svg { transform: translateX(4px); }
   .pj-btn-ghost {
-    background: #fff;
+    background: #161d27;
     color: var(--blue) !important;
     box-shadow: none;
   }

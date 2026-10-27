@@ -1,20 +1,20 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primaryColor: rgb(99, 102, 241);
-  --color-secondaryColor: rgb(161, 163, 247);
+  --color-primaryColor: rgb(245,166,35);
+  --color-secondaryColor: rgb(255,196,87);
   --color-primaryText: rgb(255, 255, 255);
   --color-heroText: rgb(230, 230, 230);
   --color-secondaryText: rgb(174, 178, 183);
-  --color-bgDark1: rgb(23, 24, 27);
-  --color-bgDark2: rgb(30, 31, 35);
-  --color-bgDark3: rgb(40, 41, 46);
-  --color-bgDark3Hover: rgb(47, 48, 54);
-  --color-bgDark3HoverLight: rgb(43, 44, 50);
-  --color-bgDarkTransparent: rgb(23 24 27 / 0.7);
+  --color-bgDark1: rgb(16, 21, 28);
+  --color-bgDark2: rgb(20, 26, 34);
+  --color-bgDark3: rgb(28, 37, 50);
+  --color-bgDark3Hover: rgb(36, 46, 61);
+  --color-bgDark3HoverLight: rgb(32, 41, 55);
+  --color-bgDarkTransparent: rgb(16 21 28 / 0.7);
   --color-bgDarkTransparentDarker: rgb(0 0 0 / 0.5);
-  --color-bgDarkTransparentLighter: rgb(40 41 46 / 0.7);
-  --color-bgDark1Lighter: rgb(24, 26, 29);
+  --color-bgDarkTransparentLighter: rgb(28 37 50 / 0.7);
+  --color-bgDark1Lighter: rgb(18, 24, 32);
   --color-mainBorder: rgb(255 255 255 / 0.15);
   --color-mainBorderDarker: rgb(255 255 255 / 0.07);
   --color-mainBorderSubtler: rgb(255 255 255 / 0.1);
@@ -71,7 +71,7 @@
 /* Buttons */
 
 .contained-button {
-  @apply bg-primaryColor text-primaryText flex cursor-pointer items-center justify-center rounded-lg font-bold transition hover:bg-[#7274f3];
+  @apply bg-primaryColor text-bgDark1 flex cursor-pointer items-center justify-center rounded-lg font-bold transition hover:bg-[#ffb84d];
 }
 .outlined-button {
   @apply text-primaryText border-mainBorder bg-bgDark2 hover:bg-bgDark3 cursor-pointer rounded-xl border border-solid text-sm;
@@ -102,8 +102,8 @@
     radial-gradient(ellipse at 0% 0%, rgb(100, 97, 115), transparent 50%),
     radial-gradient(ellipse at 100% 100%, rgb(100, 97, 115), transparent 50%);
   -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+    linear-gradient(#161d27 0 0) content-box,
+    linear-gradient(#161d27 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;

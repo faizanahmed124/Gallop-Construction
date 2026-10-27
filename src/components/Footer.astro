@@ -1,6 +1,8 @@
 ---
 // Footer.astro — Gallop Construction
 // Background image: /public/backgroundimage.png
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-clean.png';
 
 const features = [
   {
@@ -92,13 +94,14 @@ const year = new Date().getFullYear();
     <!-- ══ Middle: brand + CTA ══ -->
     <div class="ft-mid">
       <a href="/" class="ft-brand" aria-label="Gallop Construction home">
-        <span class="ft-brand-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-6 7 6v12"/><path d="M9 21v-5h6v5"/></svg>
-        </span>
-        <span class="ft-brand-text">
-          <span class="ft-brand-name">GALLOP</span>
-          <span class="ft-brand-sub">CONSTRUCTION</span>
-        </span>
+        <Image
+          src={logo}
+          alt="Gallop Construction Pakistan"
+          height={120}
+          width={Math.round(120 * logo.width / logo.height)}
+          densities={[1, 2]}
+          class="ft-logo"
+        />
       </a>
 
       <div class="ft-cta">
@@ -157,12 +160,12 @@ const year = new Date().getFullYear();
 
 <style>
   .ft {
-    --blue: #1d6ff2;
-    --blue-light: #60a5fa;
+    --blue: #f5a623;
+    --blue-light: #fbbf24;
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    background: #071a3a;
+    background: #0d1218;
     color: #fff;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
@@ -178,13 +181,13 @@ const year = new Date().getFullYear();
   .ft-bg-shade {
     position: absolute; inset: 0;
     background:
-      linear-gradient(90deg, rgba(7,26,58,0.15) 0%, rgba(7,26,58,0.75) 28%, rgba(7,26,58,0.88) 60%, rgba(7,26,58,0.92) 100%),
-      linear-gradient(to top, rgba(4,14,34,0.95) 0%, rgba(4,14,34,0.6) 30%, transparent 60%);
+      linear-gradient(90deg, rgba(10,13,18,0.15) 0%, rgba(10,13,18,0.75) 28%, rgba(10,13,18,0.88) 60%, rgba(10,13,18,0.92) 100%),
+      linear-gradient(to top, rgba(10,13,18,0.95) 0%, rgba(10,13,18,0.6) 30%, transparent 60%);
   }
   .ft-glow {
     position: absolute; width: 520px; height: 520px; border-radius: 50%;
     right: -160px; top: -200px;
-    background: rgba(29,111,242,0.28);
+    background: rgba(245,166,35,0.28);
     filter: blur(110px);
     animation: ftGlow 16s ease-in-out infinite alternate;
   }
@@ -241,12 +244,12 @@ const year = new Date().getFullYear();
     border-radius: 50%;
     display: grid; place-items: center;
     color: var(--blue-light);
-    border: 1.5px solid rgba(96,165,250,0.45);
-    background: rgba(29,111,242,0.12);
+    border: 1.5px solid rgba(251,191,36,0.45);
+    background: rgba(245,166,35,0.12);
     transition: background 0.3s, color 0.3s, transform 0.3s;
   }
   .ft-feature-icon svg { width: 22px; height: 22px; }
-  .ft-feature:hover .ft-feature-icon { background: var(--blue); color: #fff; border-color: var(--blue); transform: scale(1.06); }
+  .ft-feature:hover .ft-feature-icon { background: var(--blue); color: #10151c; border-color: var(--blue); transform: scale(1.06); }
   .ft-feature-title { display: block; font-size: 1rem; font-weight: 700; color: #fff; }
   .ft-feature-text { display: block; margin-top: 2px; font-size: 0.82rem; color: rgba(255,255,255,0.65); }
 
@@ -257,17 +260,12 @@ const year = new Date().getFullYear();
     border-top: 1px solid rgba(255,255,255,0.12);
   }
   .ft-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-  .ft-brand-mark {
-    width: 54px; height: 54px; border-radius: 14px;
-    display: grid; place-items: center;
-    background: linear-gradient(150deg, #2b7cff, #1257d6);
-    color: #fff;
-    box-shadow: 0 10px 24px rgba(29,111,242,0.35);
+  .ft-logo {
+    display: block; height: 120px; width: auto;
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,0.55));
+    transition: transform 0.3s;
   }
-  .ft-brand-mark svg { width: 28px; height: 28px; }
-  .ft-brand-text { display: flex; flex-direction: column; line-height: 1; }
-  .ft-brand-name { font-size: 1.6rem; font-weight: 800; letter-spacing: 0.06em; color: #fff; }
-  .ft-brand-sub { margin-top: 4px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.32em; color: var(--blue-light); }
+  .ft-brand:hover .ft-logo { transform: translateY(-3px) scale(1.03); }
 
   .ft-cta { flex: 1; padding-left: 2.5rem; border-left: 1px solid rgba(255,255,255,0.12); }
   .ft-cta-title { margin: 0; font-size: 1.15rem; font-weight: 700; color: #fff; }
@@ -288,14 +286,14 @@ const year = new Date().getFullYear();
     padding: 15px 32px;
     border-radius: 999px;
     background: var(--blue);
-    color: #fff !important;
+    color: #10151c !important;
     font-size: 0.95rem; font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 12px 28px rgba(29,111,242,0.40);
+    box-shadow: 0 12px 28px rgba(245,166,35,0.40);
     transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
   }
   .ft-btn svg { width: 16px; height: 16px; transition: transform 0.25s; }
-  .ft-btn:hover { background: #155ad1; transform: translateY(-2px); box-shadow: 0 16px 34px rgba(29,111,242,0.50); }
+  .ft-btn:hover { background: #e0951a; transform: translateY(-2px); box-shadow: 0 16px 34px rgba(245,166,35,0.50); }
   .ft-btn:hover svg { transform: translateX(4px); }
 
   /* ── Bottom ── */
@@ -326,7 +324,7 @@ const year = new Date().getFullYear();
     .ft-top { padding-left: 18vw; }
   }
   @media (max-width: 900px) {
-    .ft-bg-shade { background: linear-gradient(to bottom, rgba(7,26,58,0.80), rgba(4,14,34,0.95)); }
+    .ft-bg-shade { background: linear-gradient(to bottom, rgba(10,13,18,0.80), rgba(10,13,18,0.95)); }
     .ft-top { grid-template-columns: 1fr; gap: 2.5rem; padding: 4.5rem 0 3rem; }
     .ft-features { justify-self: start; }
     .ft-mid { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
